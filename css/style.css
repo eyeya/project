@@ -498,17 +498,7 @@ ul.social_icon li a:hover {
 }
 
 
-.slin::before {
-     position: absolute;
-     content: "";
-     bottom: 0%;
-     background: url(../images/slin.png);
-     background-repeat: no-repeat;
-     max-width: 820px;
-     height: 147px;
-     right: 15%;
-     width: 100%;
-}
+
 
 .we_box {
      text-align: center;

@@ -1,3 +1,30 @@
+<?php
+session_start();
+error_reporting(0);
+include 'config.php';
+$Menu  = $_REQUEST['Menu'];
+$Submenu = $_REQUEST['Submenu'];
+if ($Menu == "1") {
+   $selected = "class='selected'";
+   if ($Submenu == "main") {
+     $Fileshow = "main.php";
+   } 
+ } else if ($Menu == "2") {
+   $selected2 = "class='selected'";
+   if ($Submenu == "pricing") {
+     $Fileshow = "pricing.php";
+   }
+ } else if ($Menu == "3") {
+   $selected2 = "class='selected'";
+   if ($Submenu == "promotion") {
+     $Fileshow = "promotion.php";
+   }
+ } 
+ else {
+   $Fileshow = "main.php";
+ }
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,6 +56,9 @@
 
 </head>
 <style>
+ .img{
+   max-width: 500px;
+ }
 </style>
 <!-- body -->
 
@@ -55,14 +85,17 @@
                      </button>
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
-                           <li class="nav-item active">
-                              <a class="nav-link" href="index.php">หน้าแรก</a>
+                           <li class="nav-item">
+                           <a class="nav-link" onclick="location. href='index.php?Menu=1&Submenu=main';">หน้าแรก</a>
+                              
+                           </li>
+                           <li class="nav-item ">
+                           <a class="nav-link" onclick="location. href='index.php?Menu=2&Submenu=pricing';">คอร์ส</a>
+                           
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="pricing.php">คอร์ส</a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="we-do.php">โปรโมชั่น</a>
+                           <a class="nav-link" onclick="location. href='index.php?Menu=3&Submenu=promotion';">โปรโมชั่น</a>
+                              
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="pricing.php">ปฏิทินวันว่าง</a>
@@ -84,104 +117,13 @@
          </div>
       </div>
    </header>
-   <!-- end header inner -->
-   <!-- end header -->
-
-   <!-- what we do  -->
-   <div class="we_do slin">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="titlepage">
-                  <h2>Welcome to H Spa </h2>
-               </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-12 ">
-               <div class="row">
-                  <div class=" col-sm">
-                     <div class="we_box">
-
-                        <i><img src="images/spa1.jpg"></i>
-                        <h3>คอร์สผิวหน้าใส</h3>
-                        <p>ราคา 1200 ต่อ 1 ครั้ง <br>ต่อเนื่อง 10 ครั้ง ฟรี1 ครั้ง </p>
-                     </div>
-                  </div>
-                  <div class="col-sm">
-                     <div class="we_box">
-                        <i><img src="images/spa2.jpg" alt="#" /></i>
-                        <h3>คอร์ส Detox ผิว</h3>
-                        <p>ราคา 1500 ต่อ 1 ครั้ง <br>ต่อเนื่อง 10 ครั้ง ฟรี1 ครั้ง </p>
-                     </div>
-                  </div>
-                  <div class="col-sm">
-                     <div class="we_box">
-                        <i><img src="images/spa3.jpg" alt="#" /></i>
-                        <h3>คอร์ส ยกกระชับใบหน้า </h3>
-                        <p>ราคา 2000 ต่อ 1 ครั้ง <br>ต่อเนื่อง 10 ครั้ง ฟรี1 ครั้ง </p>
-                     </div>
-                  </div>
-
-               </div>
-            </div>
-         </div>
-      </div>
-   </div> 
-   <!-- end what we do  -->
-   <!-- about -->
-
-   <!-- our pricing -->
-   <div class="pricing slin">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="titlepage">
-                  <h2>Our Pricing</h2>
-               </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-4">
-               <div class="pricing_box">
-                  <div class="pricing_box_ti">
-                     <h3> <span>$</span>20<strong>/one Day</strong></h3>
-                  </div>
-                  <div class="our_pricing">
-                     <span>Regular</span>
-                     <p>Lorem ipsum dolor sit amet, iscing elit, sed do magna</p>
-                  </div>
-               </div>
-               <a class="read_more mar_top" href="Javascript:void(0)"> Book Now</a>
-            </div>
-            <div class="col-md-4">
-               <div class="pricing_box">
-                  <div class="pricing_box_ti">
-                     <h3> <span>$</span>30<strong>/one Day</strong></h3>
-                  </div>
-                  <div class="our_pricing">
-                     <span>Standard</span>
-                     <p>Lorem ipsum dolor sit amet, iscing elit, sed do magna</p>
-                  </div>
-               </div>
-               <a class="read_more mar_top" href="Javascript:void(0)"> Book Now</a>
-            </div>
-            <div class="col-md-4">
-               <div class="pricing_box">
-                  <div class="pricing_box_ti">
-                     <h3> <span>$</span>40<strong>/one Day</strong></h3>
-                  </div>
-                  <div class="our_pricing">
-                     <span>Premium</span>
-                     <p>Lorem ipsum dolor sit amet, iscing elit, sed do magna</p>
-                  </div>
-               </div>
-               <a class="read_more mar_top" href="Javascript:void(0)"> Book Now</a>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- end our pricing -->
+   
+   
+   <?php
+          include($Fileshow);
+          ?>
+  
+  
 
    <!--  footer -->
    <footer>
@@ -190,48 +132,15 @@
             <div class="row">
                <div class="col-md-12">
                   <ul class="conta">
-                     <li><i class="fa fa-map-marker" aria-hidden="true"></i> Passages of Lorem Ipsum available</li>
-                     <li><i class="fa fa-phone" aria-hidden="true"></i> Call : +012334567890</li>
-                     <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> demo@gmail.com</a></li>
+                     <li><i class="fa fa-map-marker" aria-hidden="true"></i>87/3 หมู่3 ต.คลองสวนพลู อ.เมือง  จ.พระนครศรีอยุธยา  13000</li>
+                     <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 063-147-2519</li>
+
                   </ul>
                </div>
-               <div class=" col-md-3 col-sm-6">
-                  <h3>About </h3>
-                  <p class="variat">There are many variations of passages of Lorem Ipsum available, but the majority have suffered le</p>
-               </div>
-               <div class=" col-md-3 col-sm-6">
-                  <h3>Nail Salon </h3>
-                  <p class="variat">There are many variations of passages of Lorem Ipsum available, but the majority have suffered le</p>
-               </div>
-               <div class="col-md-2 col-sm-6">
-                  <h3>Useful Link</h3>
-                  <ul class="link_menu">
-                     <li class="active"><a href="index.html">Home</a></li>
-                     <li><a href="about.html"> About</a></li>
-                     <li><a href="we-do.html">What we do</a></li>
-                     <li><a href="pricing.html">Pricing</a></li>
-                     <li><a href="contact.html">Contact Us</a></li>
-                  </ul>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <h3>Subscribe</h3>
-                  <form class="bottom_form">
-                     <a class="right_btn" href="Javascript:void(0)"> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                     <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                     <p>There are many variations of passages </p>
-                  </form>
-               </div>
+              
             </div>
          </div>
-         <div class="copyright">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-10 offset-md-1">
-                     <p>© 2019 All Rights Reserved. Design by <a href="https://html.design/"> Free Html Templates</a></p>
-                  </div>
-               </div>
-            </div>
-         </div>
+         
       </div>
    </footer>
    <!-- end footer -->
