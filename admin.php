@@ -11,25 +11,38 @@ if ($Menu == "1") {
   } else if ($Submenu == "indexuser") {
     $Fileshow = "user/indexuser.php";
   }
-  
 } else if ($Menu == "2") {
   $selected2 = "class='selected'";
   if ($Submenu == "indexco") {
     $Fileshow = "course/indexco.php";
+  } else if ($Submenu == "createcourse") {
+    $Fileshow = "course/createcourse.php";
   }
 } else if ($Menu == "3") {
   $selected2 = "class='selected'";
   if ($Submenu == "indexpro") {
     $Fileshow = "promotion/indexpro.php";
+  } else if ($Submenu == "createpro") {
+    $Fileshow = "promotion/createpro.php";
   }
 } else if ($Menu == "4") {
   $selected2 = "class='selected'";
   if ($Submenu == "indexbook") {
     $Fileshow = "booking/indexbook.php";
-  }else if ($Submenu == "createbook") {
+  } else if ($Submenu == "createbook") {
     $Fileshow = "booking/createbook.php";
   }
-
+} else if ($Menu == "5") {
+  $selected2 = "class='selected'";
+  if ($Submenu == "indexreport") {
+    $Fileshow = "report/indexreport.php";
+  } else if ($Submenu == "indexreport1") {
+    $Fileshow = "report/indexreport1.php";
+  }
+  else if ($Submenu == "indexreport2") {
+    $Fileshow = "report/indexreport2.php";
+  }
+  
 } else {
   $Fileshow = "main2.php";
 }
@@ -86,6 +99,7 @@ if ($Menu == "1") {
 
     .welcome {
       padding-top: 30px;
+      font-size: 20px;
     }
 
     .w3-table-all th {
@@ -112,20 +126,54 @@ if ($Menu == "1") {
       margin-left: 750px;
       font-size: 14px;
     }
+
+    .form-row {
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 30px;
+      /* font-size: 20px; */
+
+    }
+
+    .w3-rest {
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 30px;
+    }
+
+    .headshow {
+
+      width: 900px;
+      font-size: 45px;
+    }
+
+    .w3-center {
+      padding-bottom: 30px;
+      text-align: center;
+    }
+
+    .w3-bar-block {
+      font-size: 20px;
+    }
+
+    .aa {
+      margin-top: 321px;
+
+    }
   </style>
 </head>
 
 <body class="w3-light-grey">
 
   <!-- Top container -->
-  <div class="w3-bar w3-top w3-pink w3-large" style="z-index:4">
+  <div class="w3-bar w3-top  w3-black w3-large" style="z-index:4; ">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>Menu</button>
-    <span class="w3-bar-item w3-right">ADMIN H SPA</span>
+    <span class="w3-bar-item w3-right " style="color:white;"><i class="fa fa-user-circle"></i>ADMIN H SPA </span>
   </div>
 
   <!-- Sidebar/menu -->
   <div class="sidebar">
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <nav class="w3-sidebar w3-collapse w3-pale-red w3-hover-pale-red" style="z-index:3;width:300px;" id="mySidebar"><br>
       <div class="w3-container w3-row">
         <div class="w3-col s4">
           <img src="images/spa1.jpg" class="w3-circle w3-margin-right" style="width:46px">
@@ -140,24 +188,35 @@ if ($Menu == "1") {
 
       </div>
       <hr>
-      <div class="w3-container">
-        <h5>Admin</h5>
-      </div>
+
       <div class="w3-bar-block">
-        <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=1&Submenu=indexuser';"><i class="fa fa-address-book"></i>ข้อมูลผู้ใช้งาน</a>
-        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=2&Submenu=indexco';"><i class="fa fa-user"></i>ข้อมูลคอร์ส</a>
-        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=3&Submenu=indexpro';"><i class="fa fa-user"></i>ข้อมูลโปรโมชั่น</a>
-        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=4&Submenu=indexbook';"><i class="fa fa-user"></i>ข้อมูลการจอง</a>
+
+        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=1&Submenu=indexuser';"><i class="fa fa-user-circle"></i>&nbsp;ข้อมูลผู้ใช้งาน</a>
+        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=2&Submenu=indexco';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลคอร์ส</a>
+        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=3&Submenu=indexpro';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลโปรโมชั่น</a>
+        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=4&Submenu=indexbook';"><i class="fa fa-list"></i>&nbsp;ข้อมูลการจอง</a>
+        <div class="w3-dropdown-hover">
+          <button class="w3-button"><i class="fa fa-folder"></i>&nbsp;รายงานสรุป</button>
+          <div class="w3-dropdown-content  w3-card-4">
+            <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=5&Submenu=indexreport';"><i class="fa fa-folder"></i>&nbsp;สรุปยอดรายเดือน</a>
+            <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=5&Submenu=indexreport1';"><i class="fa fa-folder"></i>&nbsp;สรุปคอร์สที่ได้รับความนิยม</a>
+            <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=5&Submenu=indexreport2';"><i class="fa fa-folder"></i>&nbsp;สรุปโปรโมชั่นที่ได้รับความนิยม</a>
+          </div>
+        </div>
+      </div>
+      <div class="aa">
+        <button class="w3-button w3-block w3-black" style="width:100%">ออกจากระบบ</button>
       </div>
     </nav>
   </div>
-  <div class="container">
+  <div class="row justify-content-end">
+    <div class="container">
 
-    <?php
-    include($Fileshow);
-    ?>
+      <?php
+      include($Fileshow);
+      ?>
 
+    </div>
   </div>
 
 

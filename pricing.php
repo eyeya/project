@@ -64,9 +64,10 @@
 
                         <div class="modal-body">
 
-                           <!-- // ฟอร์มกรอกข้อมูลการจอง -->
-                           <form>
-                              <div class="form-group">
+                           <!-- // ฟอร์มกรอกข้อมูลการจอง  formaction -->
+                           <form action="" >
+                              <div class="form-group"> 
+                                 <!-- //ดึงข้อมูลคนเข้าใช้มาโชว์ -->
                                  <label for="exampleInputName">ชื่อ-นามสกุล</label>
                                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล">
 

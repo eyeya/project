@@ -7,23 +7,34 @@ $Submenu = $_REQUEST['Submenu'];
 if ($Menu == "1") {
    $selected = "class='selected'";
    if ($Submenu == "main") {
-     $Fileshow = "main.php";
-   } 
- } else if ($Menu == "2") {
+      $Fileshow = "main.php";
+   }
+} else if ($Menu == "2") {
    $selected2 = "class='selected'";
    if ($Submenu == "pricing") {
-     $Fileshow = "pricing.php";
+      $Fileshow = "pricing.php";
    }
- } else if ($Menu == "3") {
+} else if ($Menu == "3") {
    $selected2 = "class='selected'";
    if ($Submenu == "promotion") {
-     $Fileshow = "promotion.php";
+      $Fileshow = "promotion.php";
    }
- } 
- else {
+} else if ($Menu == "4") {
+   $selected2 = "class='selected'";
+   if ($Submenu == "fullcalendar") {
+      $Fileshow = "fulcalendar .php";
+   }
+} else if ($Menu == "5") {
+   $selected2 = "class='selected'";
+   if ($Submenu == "history") {
+      $Fileshow = "history.php";
+   }else if ($Submenu == "details") {
+      $Fileshow = "details.php";
+    }
+} else {
    $Fileshow = "main.php";
- }
- 
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +67,9 @@ if ($Menu == "1") {
 
 </head>
 <style>
- .img{
-   max-width: 500px;
- }
+   .img {
+      max-width: 500px;
+   }
 </style>
 <!-- body -->
 
@@ -80,50 +91,52 @@ if ($Menu == "1") {
                </div>
                <div>
                   <nav class="navigation navbar navbar-expand-md navbar-dark ">
-                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                      </button>
+                     <!-- link เชื่อมหน้า -->
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
                            <li class="nav-item">
-                           <a class="nav-link" onclick="location. href='index.php?Menu=1&Submenu=main';">หน้าแรก</a>
-                              
+                              <a class="nav-link" onclick="location. href='index.php?Menu=1&Submenu=main';">หน้าแรก</a>
                            </li>
                            <li class="nav-item ">
-                           <a class="nav-link" onclick="location. href='index.php?Menu=2&Submenu=pricing';">คอร์ส</a>
-                           
+                              <a class="nav-link" onclick="location. href='index.php?Menu=2&Submenu=pricing';">คอร์ส</a>
                            </li>
                            <li class="nav-item">
-                           <a class="nav-link" onclick="location. href='index.php?Menu=3&Submenu=promotion';">โปรโมชั่น</a>
-                              
+                              <a class="nav-link" onclick="location. href='index.php?Menu=3&Submenu=promotion';">โปรโมชั่น</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="pricing.php">ปฏิทินวันว่าง</a>
+                              <a class="nav-link" onclick="location. href='index.php?Menu=4&Submenu=fullcalendar';">ตารางวันว่าง</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="contact.php">ประวัติการจอง</a>
+                              <a class="nav-link" onclick="location. href='index.php?Menu=5&Submenu=history';">ประวัติการจอง</a>
                            </li>
+                        
+
                         </ul>
                      </div>
                   </nav>
                </div>
                <div class="z">
                   <ul class="social_icon">
-                     <button type="button" class="btn btn-primary">สมัครสมาชิก</button>
-                     <button type="button" class="btn btn-secondary">เข้าสู่ระบบ</button>
+
+
+                     <button type="button" class="btn btn-primary" onclick="location. href='register.php';">สมัครสมาชิก</button>
+                     <button type="button" class="btn btn-secondary" onclick="location. href='login.php';">เข้าสู่ระบบ</button>
                   </ul>
                </div>
             </div>
          </div>
       </div>
    </header>
-   
-   
+
+
    <?php
-          include($Fileshow);
-          ?>
-  
-  
+   include($Fileshow);
+   ?>
+
+
 
    <!--  footer -->
    <footer>
@@ -132,15 +145,15 @@ if ($Menu == "1") {
             <div class="row">
                <div class="col-md-12">
                   <ul class="conta">
-                     <li><i class="fa fa-map-marker" aria-hidden="true"></i>87/3 หมู่3 ต.คลองสวนพลู อ.เมือง  จ.พระนครศรีอยุธยา  13000</li>
+                     <li><i class="fa fa-map-marker" aria-hidden="true"></i>87/3 หมู่3 ต.คลองสวนพลู อ.เมือง จ.พระนครศรีอยุธยา 13000</li>
                      <li><i class="fa fa-phone" aria-hidden="true"></i> Call : 063-147-2519</li>
 
                   </ul>
                </div>
-              
+
             </div>
          </div>
-         
+
       </div>
    </footer>
    <!-- end footer -->

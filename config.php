@@ -1,16 +1,39 @@
 <?php
-$servername = "localhost";
+$host = "localhost";
 $username = "root";
-$password = "";
+$userpassword = "";
 $dbname = "spa";
+  
+$conn = mysqli_connect($host ,$username ,$userpassword ,$dbname);
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (mysqli_connect_errno())
+{
+	echo "Database Connect Failed : " . mysqli_connect_error();
 }
-    // ถ้าจะดูว่ามันติดมั้ยให้ เปิด comment echo
-// echo "Connected successfully";
+else
+{
+	// echo "Database Connected.";
+}
+
+mysqli_close($conn);
 ?>
+
+<!-- ตัวอย่าง -->
+
+<!-- $host = "localhost";
+$username = "root";
+$userpassword = "root";
+$dbname = "mydatabase";
+  
+$conn = mysqli_connect($host ,$username ,$userpassword ,$dbname);
+
+if (mysqli_connect_errno())
+{
+	echo "Database Connect Failed : " . mysqli_connect_error();
+}
+else
+{
+	echo "Database Connected.";
+}
+
+mysqli_close($conn); -->
