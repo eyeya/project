@@ -13,16 +13,20 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>ข้อมูลโปรโมชั่น</h2>
+                    <h2>ข้อมูลคอร์ส</h2>
                 </div>
                 <div class="card-body">
                     <form class="create">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputName">ชื่อโปรโมชั่น</label>
+                        <div class="form-group col-md-2">
+                                <label for="inputName">รหัส</label>
                                 <input type="text" class="form-control" id="inputName" placeholder="Name">
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="inputName">ชื่อคอร์ส</label>
+                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="inputPrice">ราคา</label>
                                 <input type="text" class="form-control" id="input" placeholder="Price">
                             </div>

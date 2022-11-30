@@ -31,7 +31,7 @@
               <td>Smith</td>
               <td>50</td>
               <td>Jill</td>
-              <td><button type="button" class="btn btn-warning">แก้ไข</button></td>
+              <td><a href="admin.php?Menu=4&Submenu=editbook"><button type="button" class="btn btn-warning">แก้ไข</button></td>
               <td><button type="button" class="btn btn-danger">ลบ</button></td>
             </tr>
             <tr>

@@ -1,39 +1,12 @@
 <?php
-$host = "localhost";
-$username = "root";
-$userpassword = "";
-$dbname = "spa";
-  
-$conn = mysqli_connect($host ,$username ,$userpassword ,$dbname);
+$Host = "localhost";
+$Database = "spa";
+$DB_Username = "root";
+$DB_Password = "";
 
-if (mysqli_connect_errno())
-{
-	echo "Database Connect Failed : " . mysqli_connect_error();
-}
-else
-{
-	// echo "Database Connected.";
-}
+$conn = mysqli_connect($Host ,$DB_Username,$DB_Password,$Database)or die("Can not connect Guest Database");
 
-mysqli_close($conn);
+mysqli_set_charset($conn, 'utf8');
+date_default_timezone_set('Asia/Bangkok');
 ?>
 
-<!-- ตัวอย่าง -->
-
-<!-- $host = "localhost";
-$username = "root";
-$userpassword = "root";
-$dbname = "mydatabase";
-  
-$conn = mysqli_connect($host ,$username ,$userpassword ,$dbname);
-
-if (mysqli_connect_errno())
-{
-	echo "Database Connect Failed : " . mysqli_connect_error();
-}
-else
-{
-	echo "Database Connected.";
-}
-
-mysqli_close($conn); -->

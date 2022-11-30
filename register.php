@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,54 +160,72 @@
         <div class="row " >
             <div class="col-md-3 register-left">
                 <img src="images/ห้อง1.jpg" alt="" />
-                
-                
             </div>
             <div class="col-md-9 register-right">
+                <form action="insert_register.php" method="POST">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">สมัครสมาชิก H SPA</h3>
+                            
+                            
+                            
+                            <div class="row register-form">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>ชื่อ</label>
+                                        <input type="text" class="form-control" value="" name="name"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>อายุ</label>
+                                        <input type="text" class="form-control" value="" name="age"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
 
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">สมัครสมาชิก H SPA</h3>
-                        <div class="row register-form">
+                                    <div class="form-group">
+                                        <label>นามสกุล</label>
+                                        <input type="text" class="form-control" value="" name="lastname"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>เบอร์โทร</label>
+                                        <input type="text" class="form-control" value="" name="telephone"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group ">
+                                        <label>username</label>
+                                        <input type="text" class="form-control " value="" name="username"/>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>password</label>
+                                        <input type="password" class="form-control" value="" name="password"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
 
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>ชื่อ</label>
-                                    <input type="text" class="form-control" value="" name="name"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>อายุ</label>
-                                    <input type="text" class="form-control" value="" name="age"/>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+                                    <?php if(isset($_SESSION['error'])) { ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?php 
+                                            echo $_SESSION['error'];
+                                            unset($_SESSION['error']);
+                                        ?>
+                                    </div>
+                                    <?php } ?>
+                                    <?php if(isset($_SESSION['success'])) { ?>
+                                        <div class="alert alert-success" role="alert">
+                                            <?php 
+                                                echo $_SESSION['success'];
+                                                unset($_SESSION['success']);
+                                            ?>
+                                        </div>
+                                    <?php } ?>
 
-                                <div class="form-group">
-                                    <label>นามสกุล</label>
-                                    <input type="text" class="form-control" value="" name="lastname"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>เบอร์โทร</label>
-                                    <input type="password" class="form-control" value="" name="telephone"/>
-                                </div>
+                                <button type="submit" class="btnRegister" name="btnRegister">สมัครสมาชิก</button>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="form-group ">
-                                    <label>username</label>
-                                    <input type="password" class="form-control " value="" name="username"/>
-                                </div>
-                                <div class="form-group ">
-                                    <label>password</label>
-                                    <input type="password" class="form-control" value="" name="password"/>
-                                </div>
                             </div>
-                            <div class="col-lg-12">
-                            <input type="submit" class="btnRegister" value="สมัครสมาชิก" name="u_role"/>
-                        </div>
                         </div>
                     </div>
-
-                </div>
+                </form>
             </div>
         </div>
 

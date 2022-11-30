@@ -19,6 +19,7 @@
               <th width="10%">รหัส</th>
               <th>ชื่อคอร์ส</th>
               <th>ราคา</th>
+              <th>รายละเอียด</th>
               <th>รูปภาพ</th>
               <th width="10%">แก้ไข</th>
               <th width="10%">ลบ</th>
@@ -28,25 +29,11 @@
               <td>Smith</td>
               <td>50</td>
               <td>Jill</td>
-              <td ><button type="button" class="btn btn-warning">แก้ไข</button></td>
+              <td>Jill</td>
+              <td ><a href="admin.php?Menu=2&Submenu=editcourse"><button type="button" class="btn btn-warning">แก้ไข</button></td>
               <td><button type="button" class="btn btn-danger">ลบ</button></td>
             </tr>
-            <tr>
-              <td>Eve</td>
-              <td>Jackson</td>
-              <td>94</td>
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>Adam</td>
-              <td>Johnson</td>
-              <td>67</td>
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>50</td>
-            </tr>
+            
           </table>
         </div>
       </div>

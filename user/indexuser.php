@@ -24,6 +24,7 @@
               <th>เบอร์โทร</th>
               <th>username</th>
               <th>password</th>
+              <th>สถานะ</th>
               <th width="10%">แก้ไข</th>
               <th width="10%">ลบ</th>
             </tr>
@@ -35,31 +36,11 @@
               <td>Smith</td>
               <td>50</td>
               <td>50</td>
-              <td ><button type="button" class="btn btn-warning">แก้ไข</button></td>
+              <td>50</td>
+              <td><a href="admin.php?Menu=1&Submenu=edituser"><button type="button" class="btn btn-warning">แก้ไข</button></td>
               <td><button type="button" class="btn btn-danger">ลบ</button></td>
             </tr>
-            <tr>
-              <td>Eve</td>
-              <td>Jackson</td>
-              <td>94</td>
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>50</td>
-              <td>50</td>
-              <td>50</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>Adam</td>
-              <td>Johnson</td>
-              <td>67</td>
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>50</td>
-              <td>50</td>
-              <td>50</td>
-              <td>50</td>
-            </tr>
+           
           </table>
         </div>
       </div>

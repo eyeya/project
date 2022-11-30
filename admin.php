@@ -2,6 +2,12 @@
 session_start();
 error_reporting(0);
 include 'config.php';
+
+if(!isset($_SESSION['admin_login'])) {
+  $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
+  header('location: login.php');
+}
+
 $Menu  = $_REQUEST['Menu'];
 $Submenu = $_REQUEST['Submenu'];
 if ($Menu == "1") {
@@ -10,6 +16,8 @@ if ($Menu == "1") {
     $Fileshow = "user/indexuser.php";
   } else if ($Submenu == "indexuser") {
     $Fileshow = "user/indexuser.php";
+  } else if ($Submenu == "edituser") {
+    $Fileshow = "user/edituser.php";
   }
 } else if ($Menu == "2") {
   $selected2 = "class='selected'";
@@ -17,6 +25,8 @@ if ($Menu == "1") {
     $Fileshow = "course/indexco.php";
   } else if ($Submenu == "createcourse") {
     $Fileshow = "course/createcourse.php";
+  }else if ($Submenu == "editcourse") {
+    $Fileshow = "course/editcourse.php";
   }
 } else if ($Menu == "3") {
   $selected2 = "class='selected'";
@@ -24,6 +34,8 @@ if ($Menu == "1") {
     $Fileshow = "promotion/indexpro.php";
   } else if ($Submenu == "createpro") {
     $Fileshow = "promotion/createpro.php";
+  }else if ($Submenu == "editpro") {
+    $Fileshow = "promotion/editpro.php";
   }
 } else if ($Menu == "4") {
   $selected2 = "class='selected'";
@@ -31,6 +43,8 @@ if ($Menu == "1") {
     $Fileshow = "booking/indexbook.php";
   } else if ($Submenu == "createbook") {
     $Fileshow = "booking/createbook.php";
+  } else if ($Submenu == "editbook") {
+    $Fileshow = "booking/editbook.php";
   }
 } else if ($Menu == "5") {
   $selected2 = "class='selected'";
@@ -38,11 +52,9 @@ if ($Menu == "1") {
     $Fileshow = "report/indexreport.php";
   } else if ($Submenu == "indexreport1") {
     $Fileshow = "report/indexreport1.php";
-  }
-  else if ($Submenu == "indexreport2") {
+  } else if ($Submenu == "indexreport2") {
     $Fileshow = "report/indexreport2.php";
   }
-  
 } else {
   $Fileshow = "main2.php";
 }
@@ -182,7 +194,7 @@ if ($Menu == "1") {
         <!-- //class ตกแต่ง ตรงwelcome -->
         <div class="welcome">
           <div class="w3-col s8 w3-bar">
-            <span>Welcome, <strong>Admin</strong></span><br>
+            <span>Welcome, <strong><?php echo $_SESSION['username_login'];?></strong></span><br>
           </div>
         </div>
 
@@ -205,7 +217,7 @@ if ($Menu == "1") {
         </div>
       </div>
       <div class="aa">
-        <button class="w3-button w3-block w3-black" style="width:100%">ออกจากระบบ</button>
+      <a  onclick="location. href='logout.php'"><button class="w3-button w3-block w3-black" style="width:100%">ออกจากระบบ</button></a>
       </div>
     </nav>
   </div>

@@ -1,3 +1,7 @@
+<?php
+   session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -139,11 +143,10 @@
         <div class="row">
             <div class="col-md-4 login-sec">
                 <h2 class="text-center">Login Now</h2>
-                <form class="login-form">
+                <form action = "insert_login.php" method = "POST" >
                     <div class="form-group">
                         <label class="text-uppercase">Username</label>
                         <input type="text" class="form-control" name="username" >
-
                     </div>
                     <div class="form-group">
                         <label  class="text-uppercase">Password</label>
@@ -156,9 +159,25 @@
                             <input type="checkbox" class="form-check-input">
                             <small>Remember Me</small>
                         </label>
-                        <button type="submit" class="btn btn-login float-right" name="u_role">เข้าสู่ระบบ</button>
+                       
                     </div>
-
+                    <?php if(isset($_SESSION['error'])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php 
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        ?>
+                    </div>
+                    <?php } ?>
+                    <?php if(isset($_SESSION['success'])) { ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php 
+                                echo $_SESSION['success'];
+                                unset($_SESSION['success']);
+                            ?>
+                        </div>
+                    <?php } ?>
+                    <button type="submit" class="btn btn-login float-right" name="btnLogin">เข้าสู่ระบบ</button>
                 </form>
                 
             </div>

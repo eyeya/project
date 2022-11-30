@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 include 'config.php';
+
 $Menu  = $_REQUEST['Menu'];
 $Submenu = $_REQUEST['Submenu'];
 if ($Menu == "1") {
@@ -109,9 +110,16 @@ if ($Menu == "1") {
                            <li class="nav-item">
                               <a class="nav-link" onclick="location. href='index.php?Menu=4&Submenu=fullcalendar';">ตารางวันว่าง</a>
                            </li>
+                           <?php
+                           if(isset($_SESSION['user_login'])){?>
                            <li class="nav-item">
                               <a class="nav-link" onclick="location. href='index.php?Menu=5&Submenu=history';">ประวัติการจอง</a>
                            </li>
+                           <?php }else{
+                              echo '';
+                           }
+                           ?>
+                           
                         
 
                         </ul>
@@ -120,10 +128,15 @@ if ($Menu == "1") {
                </div>
                <div class="z">
                   <ul class="social_icon">
-
-
-                     <button type="button" class="btn btn-primary" onclick="location. href='register.php';">สมัครสมาชิก</button>
-                     <button type="button" class="btn btn-secondary" onclick="location. href='login.php';">เข้าสู่ระบบ</button>
+                     <?php
+                     if(isset($_SESSION['user_login'])){?>
+                        <?php echo $_SESSION['username_login'];?>
+                        <a href="logout.php" class="btn btn-outline-danger btn-sm me-1 "><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a>
+                     <?php }else{?>
+                        <button type="button" class="btn btn-primary" onclick="location. href='register.php';">สมัครสมาชิก</button>
+                        <button type="button" class="btn btn-secondary" onclick="location. href='login.php';">เข้าสู่ระบบ</button>
+                     <?php }
+                     ?>
                   </ul>
                </div>
             </div>
