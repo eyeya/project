@@ -27,7 +27,7 @@ if(isset($_POST['btnLogin'])){
         header("location: index.php");
         }
   	}else {
-        $_SESSION['error'] = 'Wrong username or password ';
+        $_SESSION['error'] = 'username หรือ password ไม่ถูกต้อง ';
         header("location: login.php");
   	}
 

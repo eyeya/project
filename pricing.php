@@ -49,7 +49,7 @@
                      <p>เป็นคอร์ส นวดเพื่อผลัดเซลล์ของผิวที่ตายให้หลุดออก</p>
                   </div>
                </div>
-               <button type="button" class="read_more mar_top" data-toggle="modal" data-target="#exampleModal">จอง </button>
+               <button type="button" class="read_more mar_top" data-bs-toggle="modal" data-bs-target="#exampleModal">จอง </button>
 
                <!-- Modal -->
                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
