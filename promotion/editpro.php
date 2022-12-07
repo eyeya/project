@@ -1,3 +1,14 @@
+<?php 
+include '../config.php';
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+}
+
+$sql = "SELECT * FROM promotion WHERE id  = '$id'";
+$result =  mysqli_query($conn,$sql);
+$row = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,29 +27,31 @@
                     <h2>ข้อมูลคอร์ส</h2>
                 </div>
                 <div class="card-body">
-                    <form class="create">
+                    <form class="create" action="promotion/update_pro.php" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                         <div class="form-group col-md-2">
                                 <label for="inputName">รหัส</label>
-                                <input type="text" class="form-control" >
+                                <input type="text" class="form-control"  name="id" value="<?php echo $row['id']?>"  readonly >
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputName">ชื่อคอร์ส</label>
-                                <input type="text" class="form-control" >
+                                <input type="text" class="form-control" name="name" value="<?php echo $row['name']?>">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputPrice">ราคา</label>
-                                <input type="text" class="form-control" >
+                                <input type="text" class="form-control" name="price" value="<?php echo $row['price']?>">
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="exampleFormControlTextarea1">รายละเอียด</label>
-                                <textarea class="form-control"  rows="3"></textarea>
+                                <label>รายละเอียด</label>
+                                <input class="form-control" name="details" value="<?php echo $row['details']?>"></input>
                             </div>
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="file" name="image" onchange="loadFile(event)" /> <br>
+                                <input class="w3-input w3-border" type="file" name="image" onchange="loadFile(event)"  /> <br>
                                 <img id="showimg" src="" style="height:270px; width:200px;">
+                                <img src="promotion/upload/<?php echo $row['image']?>" style="max-width:150px;">
+                                <input type="text" value="<?php echo $row['image']?>" name="old_img">
                             </div>
                         </div>
                         <p class="w3-center">

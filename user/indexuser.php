@@ -1,7 +1,9 @@
 <?php 
 include '../config.php';
+//เลือกข้อมูลมาจากตารางที่ชื่อว่า user ในดาต้าเบส
 $sql = "SELECT * FROM user";
 $result =  mysqli_query($conn,$sql);
+//num_row เป็นตัวแปรที่ใช้คำสั่ง ที่เก็บคำสั่งที่เอานับจำนวนในrow ของตาราง user
 $num_row = mysqli_num_rows($result);
 ?>
 
@@ -52,10 +54,13 @@ $num_row = mysqli_num_rows($result);
               <th width="10%">ลบ</th>
             </tr>
             <?php
+            //  $i=1; ตัวแปน i  เป็นตัวแปรที่เอามาใช้ในการเรียงลำดับ โดยที่จะให้ i = 1 
             $i=1;
             // echo $num_row;
+            // if เพื่อเช็คแถวข้อข้อมูล ถ้า num_row มากกว่า 0 ให้แสดงข้อมูลในตารางมาโชว์
+            // $i++;  ถ้ามีข้อม฿ลมากกว่า 0 ก็ให้ทำการ i++ ข้อมูล (เพิ่มทีละ1 )
             if($num_row > 0){
-            
+
             while($row = mysqli_fetch_array($result)){
               ?>
             <tr>
