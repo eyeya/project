@@ -16,19 +16,19 @@
                     <h2>ข้อมูลคอร์ส</h2>
                 </div>
                 <div class="card-body">
-                    <form class="create">
+                    <form class="create" action="course/addcourse.php" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputName">ชื่อคอร์ส</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                <label>ชื่อคอร์ส</label>
+                                <input type="text" class="form-control" name="name" >
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPrice">ราคา</label>
-                                <input type="text" class="form-control" id="input" placeholder="Price">
+                                <input type="text" class="form-control" name="price" >
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="exampleFormControlTextarea1">รายละเอียด</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label>รายละเอียด</label>
+                                <input class="form-control" name="details" >
                             </div>
                         </div>
                         <div class="w3-row w3-section">

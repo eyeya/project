@@ -28,7 +28,7 @@ $row = mysqli_fetch_array($result);
                     <h2>ข้อมูลคอร์ส</h2>
                 </div>
                 <div class="card-body">
-                    <form class="create" action="course/update_course.php" method="POST">
+                    <form class="create" action="course/update_course.php" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                         <div class="form-group col-md-2">
                                 <label>รหัส</label>
@@ -49,8 +49,10 @@ $row = mysqli_fetch_array($result);
                         </div>
                         <div class="w3-row w3-section">
                             <div class="w3-rest">
-                                <input class="w3-input w3-border" type="file" name="image" onchange="loadFile(event)"   value="<?php echo $row['image']?>" readonly/> <br>
+                                <input class="w3-input w3-border" type="file" name="image" onchange="loadFile(event)" /> <br>
                                 <img id="showimg" src="" style="height:270px; width:200px;">
+                                <img src="course/upload/<?php echo $row['image']?>" style="max-width:150px;">
+                                <input type="hidden" value="<?php echo $row['image']?>" name="old_img">
                             </div>
                         </div>
                         <p class="w3-center">
