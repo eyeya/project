@@ -53,9 +53,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
+                                    <td>คอร์สหน้าใส</td>
+                                    <td>20/11/2022</td>
+                                    <td>เต็ม</td>
                                 </tr>
 
 

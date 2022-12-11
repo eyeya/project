@@ -135,7 +135,7 @@ if ($Menu == "1") {
                         
                         <?php
                         if (isset($_SESSION['user_login'])) { ?>
-                          <i class="fa fa-user-circle"> ผู้ใช้งาน : </i> <?php echo $_SESSION['username_login']; ?>
+                          <i class="fa fa-user-circle ">  </i><span class=""> ผู้ใช้งาน : <?php echo $_SESSION['username_login']; ?></span> 
                            &nbsp;&nbsp;
                            <a href="logout.php" class="btn btn-dark "></i> ออกจากระบบ</a>
                      
@@ -181,7 +181,7 @@ if ($Menu == "1") {
    <!-- Javascript files-->
    <script src="js/jquery.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script>
+   <!-- <script src="js/jquery-3.0.0.min.js"></script> -->
    <!-- sidebar -->
    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="js/custom.js"></script>

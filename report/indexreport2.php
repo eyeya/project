@@ -18,6 +18,7 @@
             <tr>
               <th width="10%">รหัส</th>
               <th>ชื่อโปรโมชั่น</th>
+              <th>ยอดจอง</th>
               
               
               
@@ -26,20 +27,10 @@
             <tr>
               <td>Jill</td>
               <td>Smith</td>
-            
+              <td>Smith</td>
              
             </tr>
-            <tr>
-              <td>Eve</td>
-              <td>Jackson</td>
-             
-            
-            </tr>
-            <tr>
-              <td>Adam</td>
-              <td>Johnson</td>
-              
-            </tr>
+           
           </table>
         </div>
       </div>

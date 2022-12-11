@@ -14,10 +14,10 @@ if(isset($_POST['btnRegister'])){
 
     $check_user = "SELECT * FROM user WHERE `username` = '$username'";
     $result = mysqli_query($conn,$check_user);
-    $user = mysqli_fetch_assoc($result);
+    $user = mysqli_fetch_assoc($result); //แปลงเป็น array
 
     if($user) { 
-        $_SESSION['error'] = 'Username already exists';
+        $_SESSION['error'] = 'ชื่อนี้มีผู้ใช้อยู่แล้ว';
         header("location: register.php");
     }else{
         $new_password = md5($password);
@@ -28,7 +28,7 @@ if(isset($_POST['btnRegister'])){
             $_SESSION['success'] = 'Register Success!!';
             header("location:login.php");
         }else{
-            $_SESSION['error'] = 'Something Wrong!!';
+            $_SESSION['error'] = 'มีข้อผิดพลาด';
             header("location:register.php");
         }
     }

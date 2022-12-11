@@ -37,6 +37,7 @@
                             <th>วัน/เดือน/ปี</th>
                             <th>ชื่อคอร์ส</th>
                             <th>ยอดรวม</th>
+                            <th>ยอดจอง</th>
                             <th width="10%">ลบ</th>
                             
                         </tr>
@@ -45,24 +46,10 @@
                             <td>Smith</td>
                             <td>50</td>
                             <td>50</td>
-                           
+                            <td>50</td>
                             <td><button type="button" class="btn btn-danger">ลบ</button></td>
                         </tr>
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td>
-                            <td>94</td>
-                            <td>50</td>
-                            
-                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
-                        <tr>
-                            <td>Adam</td>
-                            <td>Johnson</td>
-                            <td>67</td>
-                            <td>50</td>
-                            
-                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
-                        </tr>
+                       
                     </table>
                 </div>
             </div>

@@ -38,25 +38,19 @@
   <tbody>
     <tr>
       <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><a href='index.php?Menu=5&Submenu=details'><button type="button" class="btn btn-outline-info btn-sm">ประวัติระยะเวลาทำที่เหลือ</button></td>
+      <td>คอร์สหน้าใส</td>
+      <td>1000</td>
+      <td>20/11/2022</td>
+      <td><a href='index.php?Menu=5&Submenu=details'><button type="button" class="btn btn-outline-info btn-sm">เพิ่มเติม</button></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@mdo</td>
+      <td>คอร์สยกกระชับ</td>
+      <td>1300</td>
+      <td>10/10/2022</td>
+      <td><a href='index.php?Menu=5&Submenu=details'><button type="button" class="btn btn-outline-info btn-sm">เพิ่มเติม</button></td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-    </tr>
+    
   </tbody>
 </table>
         </div>
