@@ -34,19 +34,39 @@
                         <!-- <table class="w3-table-all w3-card-4"> -->
                         <tr>
                             <th width="10%">รหัส</th>
-                            <th>วัน/เดือน/ปี</th>
+                            <th>วัน-เดือน-ปี</th>
                             <th>ชื่อคอร์ส</th>
+                            <th>ชื่อโปรโมชั่น</th>
                             <th>ยอดรวม</th>
                             <th>ยอดจอง</th>
                             <th width="10%">ลบ</th>
                             
                         </tr>
                         <tr>
-                            <td>Jill</td>
-                            <td>Smith</td>
-                            <td>50</td>
-                            <td>50</td>
-                            <td>50</td>
+                            <td>1</td>
+                            <td>22-12-2022</td>
+                            <td>คอร์สเติมน้ำให้ผิว</td>
+                            <td>-</td>
+                            <td>4000</td>
+                            <td>5</td>
+                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>22-12-2022</td>
+                            <td>คอร์สหน้าใส</td>
+                            <td>-</td>
+                            <td>5000</td>
+                            <td>5</td>
+                            <td><button type="button" class="btn btn-danger">ลบ</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>22-12-2022</td>
+                            <td>-</td>
+                            <td>คอร์สหน้าใส</td>
+                            <td>18000</td>
+                            <td>2</td>
                             <td><button type="button" class="btn btn-danger">ลบ</button></td>
                         </tr>
                        

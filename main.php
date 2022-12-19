@@ -86,7 +86,7 @@ padding-top: 50px;
          <div class="row">
             <?php
             
-            $sql = "SELECT id,image,price,name,details FROM promotion";
+            $sql = "SELECT * FROM course";
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             if ($num_row > 0) {
@@ -95,9 +95,9 @@ padding-top: 50px;
             ?>
                   <div class="col-sm-3 ">
                      <div class="pricing_box shadow-sm">
-                        <img src="promotion/upload/<?= $row['image'] ?>">
+                        <img src="course/upload/<?= $row['image'] ?>">
                         <div class="pricing_box_ti">
-                           <h3> <span>฿</span><?= $row['price'] ?><strong>/10ครั้ง</strong></h3>
+                           <h3> <span>฿</span><?= number_format($row['price_promotion']); ?><strong>/10ครั้ง</strong></h3>
                         </div>
                         <div class="our_pricing">
                            <span><?= $row['name'] ?></span>

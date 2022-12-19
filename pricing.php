@@ -1,6 +1,8 @@
+<?php 
+include '../config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 
 <style>
    .pricing_box {
@@ -21,14 +23,12 @@
 
 <body class="main-layout">
 
-
-   <!-- banner -->
    <div class="back_re">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
                <div class="title">
-                  <h2>คอร์สนวดหน้า</h2>
+                  <h2>คอร์ส</h2>
                </div>
             </div>
          </div>
@@ -39,31 +39,33 @@
       <div class="container">
          <div class="row">
             <?php
-            include '../config.php';
+            
             $sql = "SELECT * FROM course";
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             if ($num_row > 0) {
                while ($row = mysqli_fetch_array($result)) {
+                  
             ?>
-                  <div class="col-sm-3">
-                     <div class="pricing_box">
+                  <div class="col-sm-3 ">
+                     <div class="pricing_box shadow-sm">
                         <img src="course/upload/<?= $row['image'] ?>">
                         <div class="pricing_box_ti">
-                           <h3> <span>฿</span><?= $row['price'] ?><strong>/ครั้ง</strong></h3>
+                           <h3> <span>฿</span><?= number_format($row['price_course']); ?><strong>/10ครั้ง</strong></h3>
                         </div>
                         <div class="our_pricing">
                            <span><?= $row['name'] ?></span>
                            <p><?= $row['details'] ?></p>
                         </div>
                      </div>
-                     <button type="button" class="read_more mar_top" data-bs-toggle="modal" data-bs-target="#exampleModal">จอง </button>
+                     <button class="read_more mar_top" data-id="<?= $row['id'] ?>" onclick="$('#dataid').val($(this).data('id')); $('#form_promotion').modal('show');" >จอง</button>
+                  
                   </div>
             <?php }
             } ?>
          </div>
 
-         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal fade" id="form_promotion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
@@ -75,51 +77,45 @@
 
                   <div class="modal-body">
 
-                     <!-- // ฟอร์มกรอกข้อมูลการจอง  formaction -->
-                     <form action="">
+                     <!-- // ฟอร์มกรอกข้อมูลการจอง -->
+                     <form action="booking/addbooking_cus.php" method="POST">
+                        <input type="hidden" name="id_course" id="dataid" value=""/>
+                        <input type="hidden" name="id_user" value="<?php echo $_SESSION['user_login']?>">
                         <div class="form-group">
-                           <!-- //ดึงข้อมูลคนเข้าใช้มาโชว์ -->
                            <label for="exampleInputName">ชื่อ-นามสกุล</label>
-                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="กรุณากรอกชื่อ-นามสกุล">
-
+                           <input type="text" class="form-control"  placeholder="กรุณากรอกชื่อ-นามสกุล" value="<?php echo $_SESSION['username_login']?>" name="name">
                         </div>
-                        <div class="form-group">
-                           <label for="exampleInputAge">อายุ</label>
-                           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="กรุณากรอกอายุ">
-                        </div>
+         
                         <div class="form-group">
                            <label for="exampleInputAge">เบอร์โทร</label>
-                           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="กรุณากรอกเบอร์โทร">
+                           <input type="tel" class="form-control" placeholder="กรุณากรอกเบอร์โทร" name="telephone">
                         </div>
                         <!-- // ปฏิทินวันว่าง -->
-                        <a>
-                           กรุณาเลือกวัน
-                        </a>
-                        <input type="date" id="ddmmyy" name="datenumregister" onchange="selectday()">
-                     </form>
-                  </div>
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-primary" data-dismiss="modal">ยืนยัน</button>
-                     <button type="button" class="btn btn-secondary">ยกเลิก</button>
-                  </div>
+                        <div class="form-group">
+                           <label for="exampleInputAge">กรุณาเลือกวัน</label>
+                           <input type="date" class="form-control"  name="date">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputAge">กรุณาเลือกเวลา</label>
+                           <input type="time" class="form-control"  name="time">
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="submit" name="addpro" class="btn btn-primary" >ยืนยัน</button>
+                        <button type="button"  class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                     </div>
+                  </form>
                </div>
             </div>
          </div>
       </div>
    </div>
-   </div>
-   </div>
-
-
-
 
 
 
    <!-- end our pricing -->
 
-   <!--  footer -->
 
-   <!-- end footer -->
 
 </body>
 

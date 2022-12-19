@@ -39,8 +39,12 @@ $row = mysqli_fetch_array($result);
                                 <input type="text" class="form-control"  name="name" value="<?php echo $row['name']?>" >
                             </div>
                             <div class="form-group col-md-4">
-                                <label>ราคา</label>
-                                <input type="text" class="form-control"  name="price" value="<?php echo $row['price']?>" >
+                                <label>ราคาคอร์ส</label>
+                                <input type="text" class="form-control"  name="price_course" value="<?php echo $row['price_course']?>" >
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>ราคาโปรโมชั่น</label>
+                                <input type="text" class="form-control"  name="price_promotion" value="<?php echo $row['price_promotion']?>" >
                             </div>
                             <div class="form-group col-md-12">
                                 <label>รายละเอียด</label>

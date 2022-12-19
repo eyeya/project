@@ -1,3 +1,13 @@
+<?php 
+include '../config.php';
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+}
+$sql = "SELECT * FROM booking WHERE id  = '$id'";
+$result =  mysqli_query($conn,$sql);
+$row = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,11 +34,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label>รหัสจอง</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="id" value="<?php echo $row['id']?>" readonly>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>ชื่อผู้จอง</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="name" value="<?php echo $row['name']?>">
                             </div>
                             <div class="form-group col-md-4">
                                 <div class="fullca">
@@ -37,9 +47,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label>ชื่อคอร์ส</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="name" value="<?php echo $row['id_cousre']?>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>ชื่อโปรโมชั่น</label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $row['id_promotion']?>">
                             </div>
 
                         </div>

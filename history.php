@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -26,33 +27,78 @@
         <div class="card-body">
 
         <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th >ครั้งที่</th>
-      <th width="25%" >ชื่อคอร์ส</th>
-      <th width="25%">ราคา</th>
-      <th  width="15%">วันที่จอง</th>
-      <th width="15%">รายละเอียด</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>คอร์สหน้าใส</td>
-      <td>1000</td>
-      <td>20/11/2022</td>
-      <td><a href='index.php?Menu=5&Submenu=details'><button type="button" class="btn btn-outline-info btn-sm">เพิ่มเติม</button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>คอร์สยกกระชับ</td>
-      <td>1300</td>
-      <td>10/10/2022</td>
-      <td><a href='index.php?Menu=5&Submenu=details'><button type="button" class="btn btn-outline-info btn-sm">เพิ่มเติม</button></td>
-    </tr>
-    
-  </tbody>
-</table>
+          <thead class="thead-dark">
+            <tr>
+              <th class="text-center" width="8%">ครั้งที่</th>
+              <th width="20%" >ชื่อคอร์ส</th>
+              <th width="20%">ราคาคอร์ส</th>
+              <th width="20%">ราคาโปรโมชั่น</th>
+              <th width="20%">วันที่จอง</th>
+              <th width="30%">สถานะการจอง</th>
+            </tr>
+          </thead>
+            <?php
+            $user = $_SESSION['user_login'];
+            $sql = "SELECT * FROM booking WHERE id_user = '$user'";
+            $result =  mysqli_query($conn, $sql);
+            $num_row = mysqli_num_rows($result);
+            $i = 1;
+            if ($num_row > 0) {
+              while ($row = mysqli_fetch_array($result)) {
+                $id_course = $row['id_course'];
+                $id_promotion = $row['id_promotion'];
+            ?>
+          <tbody>
+            <tr>
+              <td class="text-center"><?= $i ?></td>
+              <td><?php 
+              if($row['id_course']!= NULL){
+                $sql1 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_course'";
+                $result1 =  mysqli_query($conn, $sql1);
+                $r1 = mysqli_fetch_assoc($result1);
+
+                echo $r1['name'];
+              }else if($row['id_promotion']!= NULL){
+                $sql2 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_promotion'";
+                $result2 =  mysqli_query($conn, $sql2);
+                $r2 = mysqli_fetch_assoc($result2);
+
+                echo $r2['name'];
+              }else{
+                echo '';
+              }
+              
+              ?></td>
+              <td><?php 
+              if($row['id_course']!= NULL){
+                $sql3 = "SELECT course.price_course FROM course LEFT JOIN booking ON booking.id_course = course.id WHERE course.id = '$id_course'";
+                $result3 =  mysqli_query($conn, $sql3);
+                $r3 = mysqli_fetch_assoc($result3);
+
+                echo $r3['price_course'];
+              }else{
+                echo '-';
+              }
+              
+              ?></td>
+              <td><?php 
+              if($row['id_promotion']!= NULL){
+                $sql4 = "SELECT course.price_promotion FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_promotion'";
+                $result4 =  mysqli_query($conn, $sql4);
+                $r4 = mysqli_fetch_assoc($result4);
+
+                echo $r4['price_promotion'];
+              }else{
+                echo '-';
+              }
+              
+              ?></td>
+              <td><?= $row['date'].' | '.$row['time'] ?></td>
+              <td class="text-center" >1</td>
+            </tr>
+            <?php $i++;} } ?>
+          </tbody>
+        </table>
         </div>
       </div>
     </div>

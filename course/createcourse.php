@@ -23,8 +23,12 @@
                                 <input type="text" class="form-control" name="name" >
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPrice">ราคา</label>
-                                <input type="text" class="form-control" name="price" >
+                                <label for="inputPrice">ราคาคอร์ส</label>
+                                <input type="text" class="form-control" name="price_course" >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPrice">ราคาโปรโมชั่น</label>
+                                <input type="text" class="form-control" name="price_promotion" >
                             </div>
                             <div class="form-group col-md-12">
                                 <label>รายละเอียด</label>

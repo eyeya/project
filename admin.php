@@ -217,7 +217,7 @@ if ($Menu == "1") {
         </div>
       </div>
       <div class="aa">
-      <a  onclick="location. href='logout.php'"><button class="w3-button w3-block w3-black" style="width:100%">ออกจากระบบ</button></a>
+      <a  href="logout.php"><button class="w3-button w3-block w3-black" style="width:100%">ออกจากระบบ</button></a>
       </div>
     </nav>
   </div>

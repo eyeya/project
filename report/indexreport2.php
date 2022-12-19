@@ -19,16 +19,26 @@
               <th width="10%">รหัส</th>
               <th>ชื่อโปรโมชั่น</th>
               <th>ยอดจอง</th>
-              
-              
-              
-             
             </tr>
             <tr>
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>Smith</td>
-             
+              <td>1</td>
+              <td>คอร์สผลัดเซลล์ผิว</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>คอร์สเติมน้ำให้ผิว</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>คอร์สหน้าใส</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>คอร์สยกกระชับ</td>
+              <td>2</td>
             </tr>
            
           </table>
