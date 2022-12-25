@@ -1,8 +1,8 @@
 <?php
-include '../config.php';
-$sql = "SELECT booking.id,booking.telephone,booking.date AS booking_date,booking.time AS booking_time,user.name,user.lastname,course.name AS name_course,promotion.name AS name_promotion FROM booking LEFT JOIN course ON booking.id_course = course.id LEFT JOIN promotion ON booking.id_promotion = promotion.id LEFT JOIN user ON booking.id_user = user.id;";
-$result =  mysqli_query($conn, $sql);
-$num_row = mysqli_num_rows($result);
+include 'format_date.php';
+// $sql = "SELECT booking.id,booking.telephone,booking.date AS booking_date,booking.time AS booking_time,user.name,user.lastname,course.name AS name_course,promotion.name AS name_promotion FROM booking LEFT JOIN course ON booking.id_course = course.id LEFT JOIN promotion ON booking.id_promotion = promotion.id LEFT JOIN user ON booking.id_user = user.id;";
+// $result =  mysqli_query($conn, $sql);
+// $num_row = mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,58 +36,70 @@ $num_row = mysqli_num_rows($result);
               ?>
             </div>
           <?php } ?>
-          <table class="table table-striped">
-            <!-- <table class="w3-table-all w3-card-4"> -->
+          <table class="table table">
+          <thead class="">
             <tr>
-              <!-- //ใช้เชื่อมกับตารางuser ผู้จอง
-              //ใช้ชื่อคอร์ส  ตารางคอร์ส -->
-              <th width="10%">รหัส</th>
-              <th>ชื่อผู้จอง</th>
-              <th>ชื่อคอร์ส</th>
-              <th>ชื่อโปรโมชั่น</th>
-              <th>วันที่จอง</th>
-              <th width="10%">แก้ไข</th>
-              <th width="10%">ลบ</th>
+              <th class="text-center" width="8%">#</th>
+              <th width="20%" >ชื่อคอร์ส</th>
+              <th width="20%">ชื่อผู้จอง</th>
+              <th width="20%">เบอร์โทร</th>
+              <th width="20%">วันที่จอง</th>
+              <th width="30%">ครั้งที่</th>
+              <th width="30%">แก้ไข</th>
+              <th width="30%">ลบ</th>
             </tr>
+          </thead>
             <?php
+            include 'config.php';
+            $sql = "SELECT * FROM booking ";
+            $result =  mysqli_query($conn, $sql);
+            $num_row = mysqli_num_rows($result);
             $i = 1;
-            // echo $num_row;
             if ($num_row > 0) {
-
               while ($row = mysqli_fetch_array($result)) {
-                $newDate = date("d-m-Y", strtotime($row['booking_date']));
+                $id_course = $row['id_course'];
+                $id_promotion = $row['id_promotion'];
             ?>
+          <tbody>
             <tr>
-              <td><?php echo $i ?></td>
-              <td><?php echo $row['name'].' '.$row['lastname'] ?></td>
+              <td class="text-center"><?= $i ?></td>
               <td><?php 
-              if($row['name_course'] == NULL){
-                echo '-';
+              if($row['id_course']!= NULL){
+                $sql1 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_course'";
+                $result1 =  mysqli_query($conn, $sql1);
+                $r1 = mysqli_fetch_assoc($result1);
+
+                echo $r1['name'];
+              }else if($row['id_promotion']!= NULL){
+                $sql2 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_promotion'";
+                $result2 =  mysqli_query($conn, $sql2);
+                $r2 = mysqli_fetch_assoc($result2);
+
+                echo $r2['name'];
               }else{
-                echo $row['name_course']; 
+                echo '';
               }
-              ?>
-              </td>
-              <td><?php 
-              if($row['name_promotion'] == NULL){
-                echo '-';
+              
+              ?></td>
+              <td><?=$row['name'] ?></td>
+              <td><?=$row['telephone'] ?></td>
+              
+              <td><?php echo DBThaiDate($row['date']).' <br> '.TimeThai($row['time']); ?></td>
+              <td class="text-center" ><?php 
+              if($row['id_promotion']){
+                  echo $row['status'].' / 10 ครั้ง';
               }else{
-                echo $row['name_promotion']; 
+                echo $row['status'].' ครั้ง';
               }
               ?></td>
-              <td><?php echo $newDate.' | '.$row['booking_time'] ?></td>
-              <td><a href="admin.php?Menu=4&Submenu=editbook"><button type="button" class="btn btn-warning">แก้ไข</button></td>
-              <td><button type="button" class="btn btn-danger">ลบ</button></td>
-            </tr>
-            <?php $i++;
-              }
-            } else { ?>
-              <tr>
-                <td>ไม่พบข้อมูล</td>
-              </tr>
-            <?php } ?>
+
+              <td><a href="?Menu=4&Submenu=editbook&id=<?php echo $row['id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>
+              <td><a href="booking/del_book.php?id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('ต้องการลบข้อมูลหรือไม่?');">ลบ</a></td>
             
-          </table>
+            </tr>
+            <?php $i++;} } ?>
+          </tbody>
+        </table>
         </div>
       </div>
     </div>

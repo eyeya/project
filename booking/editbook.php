@@ -30,7 +30,7 @@ $row = mysqli_fetch_array($result);
 
                 <div class="card-body">
 
-                    <form class="create">
+                    <form class="create" action="booking/update_book.php" method="POST" >
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label>รหัสจอง</label>
@@ -41,27 +41,17 @@ $row = mysqli_fetch_array($result);
                                 <input type="text" class="form-control" name="name" value="<?php echo $row['name']?>">
                             </div>
                             <div class="form-group col-md-4">
-                                <div class="fullca">
-                                    <a>กรุณาเลือกวัน</a>&nbsp;&nbsp;
-                                    <input type="date" name="" onchange="selectday()">
-                                </div>
+                                <label>เบอร์โทร</label>
+                                <input type="text" name="telephone" class="form-control" value="<?php echo $row['telephone']?>" >
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>วันที่จอง</label>
+                                <input type="text" name="" class="form-control" value="<?php echo $row['date'].' '.$row['time']?>" onchange="selectday()"readonly>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label>ชื่อคอร์ส</label>
-                                <input type="text" class="form-control" name="name" value="<?php echo $row['id_cousre']?>">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>ชื่อโปรโมชั่น</label>
-                                <input type="text" class="form-control" name="name" value="<?php echo $row['id_promotion']?>">
-                            </div>
-
-                        </div>
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:50px"></div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" type="file" name="image" onchange="loadFile(event)" /> <br>
-                                <img id="showimg" src="" style="height:270px; width:200px;">
+                            <div class="form-group col-md-4">
+                                <label>ครั้งที่</label>
+                                <input type="text" class="form-control" name="status" value="<?php echo $row['status']?>" placeholder="">
                             </div>
                         </div>
                         <p class="w3-center">

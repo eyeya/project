@@ -51,7 +51,7 @@ include '../config.php';
                      <div class="pricing_box shadow-sm">
                         <img src="course/upload/<?= $row['image'] ?>">
                         <div class="pricing_box_ti">
-                           <h3> <span>฿</span><?= number_format($row['price_course']); ?><strong>/10ครั้ง</strong></h3>
+                           <h3> <span>฿</span><?= number_format($row['price_course']); ?><strong></strong></h3>
                         </div>
                         <div class="our_pricing">
                            <span><?= $row['name'] ?></span>
@@ -69,7 +69,7 @@ include '../config.php';
             <div class="modal-dialog" role="document">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">จองคอร์ส</h5>
+                     
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>

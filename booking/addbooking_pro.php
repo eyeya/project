@@ -9,17 +9,18 @@ if(isset($_POST['addpro'])){
     $telephone = $_POST['telephone'];
     $date = $_POST['date'];
     $time = $_POST['time'];
+    $status =0;
 
-    $sql = "INSERT INTO booking (id_promotion, id_user, name, telephone, date, time)
-                        VALUES(' $id_promotion','$id_user','$name','$telephone','$date','$time')";
+    $sql = "INSERT INTO booking (id_promotion, id_user, name, telephone, date, time,status)
+                        VALUES(' $id_promotion','$id_user','$name','$telephone','$date','$time','$status')";
 	$result = mysqli_query($conn, $sql);
     
     if($result){
         $_SESSION['success'] = "บันทึกข้อมูลสำเร็จ";
-        header( "location: ../history.php" );
+        header( "location: ../index.php?Menu=5&Submenu=history" );
     }else{
         $_SESSION['error'] = "บันทึกข้อมูลไม่สำเร็จ";
-        header( "location: ../history.php" );
+        header( "location: ../index.php?Menu=5&Submenu=history" );
     }
 }
 ?>

@@ -1,6 +1,15 @@
-
+<?php
+session_start();
+include 'config.php';
+include 'format_date.php';
+?>
 <!DOCTYPE html>
 <html>
+  <header>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="css/style.css">
+  </header>
 
 <body>
   <style>
@@ -26,7 +35,7 @@
 
         <div class="card-body">
 
-        <table class="table">
+        <table class="table ">
           <thead class="thead-dark">
             <tr>
               <th class="text-center" width="8%">ครั้งที่</th>
@@ -34,12 +43,12 @@
               <th width="20%">ราคาคอร์ส</th>
               <th width="20%">ราคาโปรโมชั่น</th>
               <th width="20%">วันที่จอง</th>
-              <th width="30%">สถานะการจอง</th>
+              <th width="30%">ครั้งที่</th>
             </tr>
           </thead>
             <?php
             $user = $_SESSION['user_login'];
-            $sql = "SELECT * FROM booking WHERE id_user = '$user'";
+            $sql = "SELECT * FROM booking WHERE id_user = '$user' ORDER BY id DESC";
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             $i = 1;
@@ -53,7 +62,7 @@
               <td class="text-center"><?= $i ?></td>
               <td><?php 
               if($row['id_course']!= NULL){
-                $sql1 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_course'";
+                $sql1 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_course = course.id WHERE course.id = '$id_course'";
                 $result1 =  mysqli_query($conn, $sql1);
                 $r1 = mysqli_fetch_assoc($result1);
 
@@ -93,8 +102,14 @@
               }
               
               ?></td>
-              <td><?= $row['date'].' | '.$row['time'] ?></td>
-              <td class="text-center" >1</td>
+              <td><?php echo DBThaiDate($row['date']).'  '.TimeThai($row['time']); ?></td>
+              <td class="text-center" ><?php 
+              if($row['id_promotion']){
+                  echo $row['status'].' / 10 ครั้ง';
+              }else{
+                echo $row['status'].' ครั้ง';
+              }
+              ?></td>
             </tr>
             <?php $i++;} } ?>
           </tbody>
