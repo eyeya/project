@@ -15,12 +15,12 @@ if(isset($_POST['addpro'])){
                         VALUES(' $id_course','$id_user','$name','$telephone','$date','$time','$status')";
 	$result = mysqli_query($conn, $sql);
     
-    if($result){
-        $_SESSION['success'] = "บันทึกข้อมูลสำเร็จ";
-        header( "location: ../index.php?Menu=5&Submenu=history" );
-    }else{
-        $_SESSION['error'] = "บันทึกข้อมูลไม่สำเร็จ";
-        header( "location: ../index.php?Menu=5&Submenu=history" );
-    }
+    // if($result){
+    //     $_SESSION['success'] = "บันทึกข้อมูลสำเร็จ";
+    //     header( "location: ../index.php?Menu=5&Submenu=history" );
+    // }else{
+    //     $_SESSION['error'] = "บันทึกข้อมูลไม่สำเร็จ";
+    //     header( "location: ../index.php?Menu=5&Submenu=history" );
+    // }
 }
 ?>

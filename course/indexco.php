@@ -44,8 +44,8 @@ $num_row = mysqli_num_rows($result);
               <th width="10%">รหัส</th>
               <th>ชื่อคอร์ส</th>
               <th>รายละเอียด</th>
-              <th>ราคาคอร์ส</th>
-              <th>ราคาโปรโมชั่น</th>
+              <th>ประเภท</th>
+              <th>ราคา</th>
               <th>รูปภาพ</th>
               <th width="10%">แก้ไข</th>
               <th width="10%">ลบ</th>
@@ -61,8 +61,13 @@ $num_row = mysqli_num_rows($result);
                   <td><?php echo $i ?></td>
                   <td><?php echo $row['name'] ?></td>
                   <td><?php echo $row['details'] ?></td>
-                  <td><?php echo number_format($row['price_course']); ?></td>
-                  <td><?php echo number_format($row['price_promotion']); ?></td>
+                  <td><?php if($row['type'] == 1){
+                    echo 'คอร์ส';
+                  }else{
+                    echo 'โปรโมชั่น';
+                  }                  
+                  ?></td>
+                  <td><?php echo number_format($row['price']); ?></td>
                   <td><img src="course/upload/<?php echo $row['image']?>" style="max-width:150px;"></td>
                   <td><a href="?Menu=2&Submenu=editcourse&id=<?php echo $row['id'] ?>" class="btn btn-warning">แก้ไข</a></td>
                   <td><a href="course/del_course.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" onclick="return confirm('ต้องการลบข้อมูลหรือไม่?');">ลบ</a></td>

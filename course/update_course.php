@@ -5,8 +5,8 @@ include_once '../config.php';
 if(isset($_POST['submit'])){
     $id = $_POST['id'];
     $name = $_POST['name'];
-    $price_course = $_POST['price_course'];
-    $price_promotion = $_POST['price_promotion'];
+    $price = $_POST['price'];
+    $type = $_POST['type'];
     $details = $_POST['details'];
     
     $image = $_FILES['image'];
@@ -30,13 +30,13 @@ if(isset($_POST['submit'])){
             }
         }
         //และทำการอัปเดทข้อมูลที่อัพเข้าไปใหม่ 
-        $sql = "UPDATE course SET name='$name',price_course='$price_course',price_promotion='$price_promotion',details=' $details',image='$fileNew' WHERE id='$id'";
+        $sql = "UPDATE course SET name='$name',price='$price',type='$type',details=' $details',image='$fileNew' WHERE id='$id'";
         $result = mysqli_query($conn,$sql);
 
     } else {
         //ถ้าไม่จะดึงรุปเก่ามาอัพ
         $fileNew = $old_img;
-        $sql = "UPDATE course SET name='$name',price_course='$price_course',price_promotion='$price_promotion',details=' $details',image='$fileNew' WHERE id='$id'";
+        $sql = "UPDATE course SET name='$name',price='$price',type='$type',details=' $details',image='$fileNew' WHERE id='$id'";
         $result = mysqli_query($conn,$sql);
     }
 

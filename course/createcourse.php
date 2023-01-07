@@ -13,22 +13,25 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>ข้อมูลคอร์ส</h2>
+                    <h2>ข้อมูล</h2>
                 </div>
                 <div class="card-body">
                     <form class="create" action="course/addcourse.php" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label>ชื่อคอร์ส</label>
+                                <label>ชื่อ</label>
                                 <input type="text" class="form-control" name="name" >
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPrice">ราคาคอร์ส</label>
-                                <input type="text" class="form-control" name="price_course" >
+                                <label for="inputPrice">ราคา</label>
+                                <input type="text" class="form-control" name="price" >
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPrice">ราคาโปรโมชั่น</label>
-                                <input type="text" class="form-control" name="price_promotion" >
+                                <label for="inputPrice">ประเภท</label>
+                                <select class="form-control" name="type">
+                                    <option value="1">คอร์ส</option>
+                                    <option value="2">โปรโมชั่น</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>รายละเอียด</label>

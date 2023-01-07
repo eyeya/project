@@ -28,15 +28,15 @@ if ($Menu == "1") {
   }else if ($Submenu == "editcourse") {
     $Fileshow = "course/editcourse.php";
   }
-} else if ($Menu == "3") {
-  $selected2 = "class='selected'";
-  if ($Submenu == "indexpro") {
-    $Fileshow = "promotion/indexpro.php";
-  } else if ($Submenu == "createpro") {
-    $Fileshow = "promotion/createpro.php";
-  }else if ($Submenu == "editpro") {
-    $Fileshow = "promotion/editpro.php";
-  }
+// } else if ($Menu == "3") {
+//   $selected2 = "class='selected'";
+//   if ($Submenu == "indexpro") {
+//     $Fileshow = "promotion/indexpro.php";
+//   } else if ($Submenu == "createpro") {
+//     $Fileshow = "promotion/createpro.php";
+//   }else if ($Submenu == "editpro") {
+//     $Fileshow = "promotion/editpro.php";
+//   }
 } else if ($Menu == "4") {
   $selected2 = "class='selected'";
   if ($Submenu == "indexbook") {
@@ -205,7 +205,7 @@ if ($Menu == "1") {
 
         <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=1&Submenu=indexuser';"><i class="fa fa-user-circle"></i>&nbsp;ข้อมูลผู้ใช้งาน</a>
         <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=2&Submenu=indexco';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลคอร์ส</a>
-        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=3&Submenu=indexpro';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลโปรโมชั่น</a>
+        <!-- <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=3&Submenu=indexpro';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลโปรโมชั่น</a> -->
         <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=4&Submenu=indexbook';"><i class="fa fa-list"></i>&nbsp;ข้อมูลการจอง</a>
         <div class="w3-dropdown-hover">
           <button class="w3-button"><i class="fa fa-folder"></i>&nbsp;รายงานสรุป</button>

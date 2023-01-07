@@ -25,7 +25,7 @@ if(isset($_POST['btnRegister'])){
         $result1 = mysqli_query($conn,$sql)or die("Error Query ['.$sql.']");
     
         if($result1){
-            $_SESSION['success'] = 'Register Success!!';
+            $_SESSION['success'] = 'สมัครสมาชิกสำเร็จ';
             header("location:login.php");
         }else{
             $_SESSION['error'] = 'มีข้อผิดพลาด';

@@ -32,6 +32,9 @@ if ($Menu == "1") {
    } else if ($Submenu == "details") {
       $Fileshow = "details.php";
    }
+   else if ($Submenu == "appointment") {
+      $Fileshow = "appointment.php";
+   }
 } else {
    $Fileshow = "main.php";
 }

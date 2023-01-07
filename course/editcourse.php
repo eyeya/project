@@ -8,6 +8,7 @@ if(isset($_GET['id'])){
 $sql = "SELECT * FROM course WHERE id  = '$id'";
 $result =  mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result);
+$type = $row['type'];
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ $row = mysqli_fetch_array($result);
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>ข้อมูลคอร์ส</h2>
+                    <h2>ข้อมูล</h2>
                 </div>
                 <div class="card-body">
                     <form class="create" action="course/update_course.php" method="POST" enctype="multipart/form-data">
@@ -35,16 +36,29 @@ $row = mysqli_fetch_array($result);
                                 <input type="text" class="form-control" name="id" value="<?php echo $row['id']?>" readonly >
                             </div>
                             <div class="form-group col-md-6">
-                                <label>ชื่อคอร์ส</label>
+                                <label>ชื่อ</label>
                                 <input type="text" class="form-control"  name="name" value="<?php echo $row['name']?>" >
                             </div>
                             <div class="form-group col-md-4">
-                                <label>ราคาคอร์ส</label>
-                                <input type="text" class="form-control"  name="price_course" value="<?php echo $row['price_course']?>" >
+                                <label>ราคา</label>
+                                <input type="text" class="form-control"  name="price" value="<?php echo $row['price']?>" >
                             </div>
                             <div class="form-group col-md-4">
                                 <label>ราคาโปรโมชั่น</label>
-                                <input type="text" class="form-control"  name="price_promotion" value="<?php echo $row['price_promotion']?>" >
+                                <select class="form-control" name="type" >
+                                    
+                                    <?php
+                                        $sql1 = "SELECT * FROM type ";
+                                        $sql1 = $conn->query($sql1);
+                                        while($r1 = $sql1->fetch_assoc()){
+                                            echo "<option value='".$r1['id']."'";
+                                            if($r1['id'] == $type){
+                                                echo "selected";
+                                            }
+                                            echo ">".$r1['name']."</option>'";
+                                        }
+                                        ?>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>รายละเอียด</label>
