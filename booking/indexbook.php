@@ -40,7 +40,7 @@ include 'format_date.php';
           <thead class="">
             <tr>
               <th class="text-center" width="8%">#</th>
-              <th width="20%" >ชื่อคอร์ส</th>
+              <th width="20%" >ชื่อ</th>
               <th width="20%">ชื่อผู้จอง</th>
               <th width="20%">เบอร์โทร</th>
               <th width="20%">วันที่จอง</th>
@@ -58,35 +58,23 @@ include 'format_date.php';
             if ($num_row > 0) {
               while ($row = mysqli_fetch_array($result)) {
                 $id_course = $row['id_course'];
-                $id_promotion = $row['id_promotion'];
             ?>
           <tbody>
             <tr>
-              <td class="text-center"><?= $i ?></td>
-              <td><?php 
-              if($row['id_course']!= NULL){
-                $sql1 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_course'";
-                $result1 =  mysqli_query($conn, $sql1);
-                $r1 = mysqli_fetch_assoc($result1);
-
-                echo $r1['name'];
-              }else if($row['id_promotion']!= NULL){
-                $sql2 = "SELECT course.name FROM course LEFT JOIN booking ON booking.id_promotion = course.id WHERE course.id = '$id_promotion'";
-                $result2 =  mysqli_query($conn, $sql2);
-                $r2 = mysqli_fetch_assoc($result2);
-
-                echo $r2['name'];
+            <td><?=$i ?></td>
+            <td><?php 
+              if($row['type'] == 2){
+                  echo 'โปรโมชั่น';
               }else{
-                echo '';
+                echo 'คอร์ส' ;
               }
-              
               ?></td>
               <td><?=$row['name'] ?></td>
               <td><?=$row['telephone'] ?></td>
               
               <td><?php echo DBThaiDate($row['date']).' <br> '.TimeThai($row['time']); ?></td>
               <td class="text-center" ><?php 
-              if($row['id_promotion']){
+              if($row['type'] == 2){
                   echo $row['status'].' / 10 ครั้ง';
               }else{
                 echo $row['status'].' ครั้ง';

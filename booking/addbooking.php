@@ -9,7 +9,7 @@ if(isset($_POST['addpro'])){
     $telephone = $_POST['telephone'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    $status =1;
+    $status =0;
 
     $sql1 = "SELECT type FROM course WHERE id = $id_course";
     $result1 = mysqli_query($conn, $sql1);
