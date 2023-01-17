@@ -15,11 +15,17 @@ if(isset($_POST['addpro'])){
     $result1 = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_array($result1);
     $type = $row['type'];
-    // echo $type;
 
-    $sql = "INSERT INTO booking (id_course, id_user ,type, name, telephone, date, time,status)
-                        VALUES(' $id_course','$id_user','$type','$name','$telephone','$date','$time','$status')";
+    $sql = "INSERT INTO booking (id_course, id_user ,type, name, telephone)
+                        VALUES(' $id_course','$id_user','$type','$name','$telephone')";
 	$result = mysqli_query($conn, $sql);
+    $last_id = mysqli_insert_id($conn);
+
+    
+    $sql2 = "INSERT INTO appointment (id_booking, id_user, date, time,status)
+                        VALUES(' $last_id','$id_user','$date','$time',1)";
+    $result = mysqli_query($conn, $sql2);
+
     
     if($result){
         $_SESSION['success'] = "บันทึกข้อมูลสำเร็จ";

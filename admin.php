@@ -46,6 +46,9 @@ if ($Menu == "1") {
   } else if ($Submenu == "editbook") {
     $Fileshow = "booking/editbook.php";
   }
+  else if ($Submenu == "indexappointment") {
+    $Fileshow = "appointment/indexappointment.php";
+  }
 } else if ($Menu == "5") {
   $selected2 = "class='selected'";
   if ($Submenu == "indexreport") {
@@ -207,6 +210,7 @@ if ($Menu == "1") {
         <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=2&Submenu=indexco';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลคอร์ส</a>
         <!-- <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=3&Submenu=indexpro';"><i class="fa fa-clipboard"></i>&nbsp;ข้อมูลโปรโมชั่น</a> -->
         <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=4&Submenu=indexbook';"><i class="fa fa-list"></i>&nbsp;ข้อมูลการจอง</a>
+        <a class="w3-bar-item w3-button w3-padding" onclick="location. href='admin.php?Menu=4&Submenu=indexappointment';"><i class="fa fa-list"></i>&nbsp;ตารางนัดหมาย</a>
         <div class="w3-dropdown-hover">
           <button class="w3-button"><i class="fa fa-folder"></i>&nbsp;รายงานสรุป</button>
           <div class="w3-dropdown-content  w3-card-4">

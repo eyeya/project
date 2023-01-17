@@ -20,7 +20,7 @@ include 'format_date.php';
 
         <div class="card-body">
 
-        <?php if (isset($_SESSION['error'])) { ?>
+          <?php if (isset($_SESSION['error'])) { ?>
             <div class="alert alert-danger" role="alert">
               <?php
               echo $_SESSION['error'];
@@ -37,57 +37,66 @@ include 'format_date.php';
             </div>
           <?php } ?>
           <table class="table table">
-          <thead class="">
-            <tr>
-              <th class="text-center" width="8%">#</th>
-              <th width="20%" >ชื่อ</th>
-              <th width="20%">ชื่อผู้จอง</th>
-              <th width="20%">เบอร์โทร</th>
-              <th width="20%">วันที่จอง</th>
-              <th width="30%">ครั้งที่</th>
-              <th width="30%">แก้ไข</th>
-              <th width="30%">ลบ</th>
-            </tr>
-          </thead>
+            <thead class="">
+              <tr>
+                <th class="text-center" width="8%">#</th>
+                <th width="20%">ชื่อ</th>
+                <th width="20%">ชื่อผู้จอง</th>
+                <th width="20%">เบอร์โทร</th>
+                <th width="20%">วันที่จอง</th>
+                <th width="30%">ครั้งที่</th>
+                <th width="20%">แก้ไข</th>
+                <th width="20%">ลบ</th>
+                <th width="10%">นัดหมาย</th>
+              </tr>
+            </thead>
             <?php
             include 'config.php';
-            $sql = "SELECT * FROM booking ";
+            $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time,booking.name,booking.telephone FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id GROUP BY appointment.id_booking ORDER BY booking.id DESC;";
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             $i = 1;
             if ($num_row > 0) {
               while ($row = mysqli_fetch_array($result)) {
                 $id_course = $row['id_course'];
+                $id_booking = $row['id'];
             ?>
-          <tbody>
-            <tr>
-            <td><?=$i ?></td>
-            <td><?php 
-              if($row['type'] == 2){
-                  echo 'โปรโมชั่น';
-              }else{
-                echo 'คอร์ส' ;
-              }
-              ?></td>
-              <td><?=$row['name'] ?></td>
-              <td><?=$row['telephone'] ?></td>
-              
-              <td><?php echo DBThaiDate($row['date']).' <br> '.TimeThai($row['time']); ?></td>
-              <td class="text-center" ><?php 
-              if($row['type'] == 2){
-                  echo $row['status'].' / 10 ครั้ง';
-              }else{
-                echo $row['status'].' ครั้ง';
-              }
-              ?></td>
+                <tbody>
+                  <tr>
+                    <td><?= $i ?></td>
+                    <td><?php
+                        if ($row['type'] == 2) {
+                          echo 'โปรโมชั่น';
+                        } else {
+                          echo 'คอร์ส';
+                        }
+                        ?></td>
+                    <td><?= $row['name'] ?></td>
+                    <td><?= $row['telephone'] ?></td>
 
-              <td><a href="?Menu=4&Submenu=editbook&id=<?php echo $row['id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>
-              <td><a href="booking/del_book.php?id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('ต้องการลบข้อมูลหรือไม่?');">ลบ</a></td>
-            
-            </tr>
-            <?php $i++;} } ?>
-          </tbody>
-        </table>
+                    <td><?php echo DBThaiDate($row['date']) . ' <br> ' . TimeThai($row['time']); ?></td>
+                    <td><?php 
+                    $sql2 = "SELECT COUNT(appointment.id) AS total_app FROM appointment LEFT JOIN booking on appointment.id_booking = booking.id WHERE appointment.id_booking = $id_booking AND appointment.status = 2";
+                    $result2 = mysqli_query($conn,$sql2);
+                    $row2 = mysqli_fetch_assoc($result2);
+                    $total_app = $row2['total_app'];
+                    
+                    if($row['type'] == 2){
+                        echo $total_app.' / 10 ครั้ง';
+                    }else{
+                      echo $total_app.' ครั้ง';
+                    }
+                    ?></td>
+
+                    <td><a href="?Menu=4&Submenu=editbook&id=<?php echo $row['id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>
+                    <td><a href="booking/del_book.php?id=<?php echo $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('ต้องการลบข้อมูลหรือไม่?');">ลบ</a></td>
+                    <td><a href="?Menu=4&Submenu=indexappointment&id_booking=<?php echo $row['id'] ?>" class="btn btn-success btn-sm">นัดหมาย</a></td>
+                  </tr>
+              <?php $i++;
+              }
+            } ?>
+                </tbody>
+          </table>
         </div>
       </div>
     </div>

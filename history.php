@@ -49,13 +49,16 @@ include 'format_date.php';
           </thead>
             <?php
             $user = $_SESSION['user_login'];
-            $sql = "SELECT booking.date,booking.time,booking.status,course.name AS name_course,course.price,course.type FROM booking LEFT JOIN course ON booking.id_course = course.id WHERE booking.id_user = '$user' ORDER BY booking.id DESC;";
+            // $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time,appointment.status FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id WHERE booking.id_user = $user ORDER BY booking.id DESC;";
+            $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id WHERE booking.id_user = '$user' GROUP BY appointment.id_booking ORDER BY booking.id DESC;";
+            // $sql = "SELECT * FROM booking WHERE id_user = $user;";
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             $i = 1;
             if ($num_row > 0) {
               while ($row = mysqli_fetch_array($result)) {
                 $id_course = $row['id_course'];
+                $id_booking = $row['id'];
                 
             ?>
           <tbody>
@@ -71,20 +74,28 @@ include 'format_date.php';
               }
               ?></td>
               <td><?php echo DBThaiDate($row['date']).'  '.TimeThai($row['time']); ?></td>
+
+
               <td><?php 
+              $sql2 = "SELECT COUNT(appointment.id) AS total_app FROM appointment LEFT JOIN booking on appointment.id_booking = booking.id WHERE appointment.id_user = $user AND appointment.id_booking = $id_booking AND appointment.status = 2";
+              $result2 = mysqli_query($conn,$sql2);
+              $row2 = mysqli_fetch_assoc($result2);
+              $total_app = $row2['total_app'];
+              
               if($row['type'] == 2){
-                  echo $row['status'].' / 10 ครั้ง';
+                  echo $total_app.' / 10 ครั้ง';
               }else{
-                echo $row['status'].' ครั้ง';
+                echo $total_app.' ครั้ง';
               }
               ?></td>
+
+
               <td class="text-center"><?php 
               if($row['type'] == 1){
                 echo '';
-              }else{
-                echo '<a href="index.php?Menu=5&Submenu=appointment" class="btn btn-success btn-sm">นัดหมาย</a>';
-              }
-              ?>
+              }else{?>
+                <a href="index.php?Menu=5&Submenu=appointment&id_booking=<?php echo $id_booking?>" class="btn btn-success btn-sm">นัดหมาย</a>
+              <?php } ?>
               </td>
             </tr>
             <?php $i++;} } ?>

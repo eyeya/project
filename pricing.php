@@ -51,7 +51,7 @@ include '../config.php';
                      <div class="pricing_box shadow-sm">
                         <img src="course/upload/<?= $row['image'] ?>">
                         <div class="pricing_box_ti">
-                           <h3> <span>฿</span><?= number_format($row['price']); ?><strong></strong></h3>
+                           <h3> <span>฿</span><?= number_format($row['price']); ?><strong>/1ครั้ง</strong></h3>
                         </div>
                         <div class="our_pricing">
                            <span><?= $row['name'] ?></span>
