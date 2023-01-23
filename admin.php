@@ -82,8 +82,25 @@ if ($Menu == "1") {
 
 
   <style>
+
     html,
-    body,
+    body{
+      font-family: 'Kanit', sans-serif;
+      text-align: center;
+      /* background: url('https://images.unsplash.com/photo-1476989142744-32553061aca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80') no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+      background-repeat: no-repeat; */
+    }
+    .card{
+      background-color: rgba(248,249,250,0.8);
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    }
+    /* .card-header{
+      background-color: rgba(248,249,250,1);
+    } */
     h1,
     h2,
     h3,
@@ -98,8 +115,13 @@ if ($Menu == "1") {
     }
 
     .container {
-      padding-left: 250px;
-      padding-top: 70px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      margin-left: 350px;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      /* background-color: #000; */
     }
 
     .sidebar {
@@ -137,10 +159,10 @@ if ($Menu == "1") {
       text-align: center;
     }
 
-    .btn-primary {
+    /* .btn-primary {
       margin-left: 750px;
       font-size: 14px;
-    }
+    } */
 
     .form-row {
       padding-left: 50px;
@@ -178,7 +200,7 @@ if ($Menu == "1") {
   </style>
 </head>
 
-<body class="w3-light-grey">
+<body class="">
 
   <!-- Top container -->
   <div class="w3-bar w3-top  w3-black w3-large" style="z-index:4; ">

@@ -1,6 +1,11 @@
 <?php
   include 'config.php';
   include 'format_date.php';
+
+
+  $sql = "SELECT *,COUNT(*) OVER (PARTITION BY date)AS total FROM appointment";
+  $result = mysqli_query($conn,$sql);
+
 ?>
 
 
@@ -31,15 +36,15 @@
     </style>
 
     <div class="fullcalendar">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
                         <h2 align="center">ตารางวันว่างทางร้าน</h2>
                     </div>
 
                     <div class="card-body">
-                    <div class="full">
+                    <!-- <div class="full">
                         <form action="/action_page.php">
                            
                                 <a>กรุณาเลือกวัน</a>
@@ -48,11 +53,11 @@
                             <button type="submit"><i class="fa fa-search"></i></button>
                             
                         </form>
-                    </div>
+                    </div> -->
                     
                         <table class="table">
                             <thead class="thead-dark">
-                                <tr>
+                                <tr class="text-center">
                                     <!-- <th width="25%">ชื่อคอร์ส</th> -->
                                     <th width="20%" >วันที่มีผู้เข้ามาจอง</th>
                                     <th width="15%">เวลาจอง</th>
@@ -62,32 +67,29 @@
                             <tbody>
 
                             <?php 
-                    $sql = "SELECT * FROM booking WHERE date = '2022/12/20'";
-                    $result = mysqli_query($conn,$sql);
-                    $num_row = mysqli_num_rows($result);
-                    if ($num_row > 0) {
-                    while($row = mysqli_fetch_array($result)){
-                        // echo $num_row;
-                    ?>
-                                <tr>
-                                    <!-- <td><?= $row['id']?></td> -->
-                                    <td><?= $row['date']?></td>
-                                    <td><?= $row['time']?></td>
+                                
+                                
+                                while($r = mysqli_fetch_assoc($result)){
+                                    // $count = mb_strlen($r['date']);
+                                    // echo $count;
+                                    // if($r['date']  )
+                                ?>
+                                <tr class="text-center" style="font-size:16px;">
+                                    <!-- <td><?= $r['id']?></td> -->
+                                    <td><?= DBThaiDate($r['date'])?></td>
+                                    <td><?= TimeThai($r['time'])?></td>
                                 
                                     <td><?php 
-                                    if($num_row >= 2){
-                                        echo 'เต็ม';
+                                    // echo $r['total'];
+                                    if($r['total'] >= 2){
+                                        echo '<span class="badge badge-danger" style="font-size:14px;">เต็ม</span> ';
                                     }else{
-                                        echo 'ว่าง';
+                                        echo '<span class="badge badge-primary" style="font-size:14px;"> ว่างสำหรับ 1 ท่าน</span>';
                                     }
                                     
                                     ?></td>
                                 </tr>
-                                <?php } }else{ ?>
-                                    <tr>
-                                        <td>ว่าง</td>
-                                    </tr>
-                                    <?php } ?>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

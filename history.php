@@ -73,8 +73,17 @@ include 'format_date.php';
                 echo 'โปรโมชั่น';
               }
               ?></td>
-              <td><?php echo DBThaiDate($row['date']).'  '.TimeThai($row['time']); ?></td>
+              <td>
+                <?php 
+                
+                // $sql3 = "SELECT MAX(id),date FROM appointment WHERE id_booking = $id_booking ";
+                // $result3 =  mysqli_query($conn, $sql3);
+                // $row3 = mysqli_fetch_assoc($result3);
+                // echo DBThaiDate($row3['date']);
 
+                echo DBThaiDate($row['date']).'  '.TimeThai($row['time']);
+                ?>
+              </td>
 
               <td><?php 
               $sql2 = "SELECT COUNT(appointment.id) AS total_app FROM appointment LEFT JOIN booking on appointment.id_booking = booking.id WHERE appointment.id_user = $user AND appointment.id_booking = $id_booking AND appointment.status = 2";

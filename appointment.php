@@ -122,8 +122,8 @@ $num = mysqli_num_rows($result);
                                 </div>
                                 <div class="modal-body">
                                 <form action="insert_app.php" method="post">
-                                    <input type="text" name="id_user" id="id_user" value=""/>
-                                    <input type="text" name="id_book" id="id_book" value=""/>
+                                    <input type="hidden" name="id_user" id="id_user" value=""/>
+                                    <input type="hidden" name="id_book" id="id_book" value=""/>
                                         <div class="form-group">
                                             <label for="exampleInputAge">กรุณาเลือกวัน</label>
                                             <input type="date" class="form-control" name="date">
@@ -134,7 +134,7 @@ $num = mysqli_num_rows($result);
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" name="submit">บันทึกการแก้ไข</button>
+                                        <button type="submit" class="btn btn-primary" name="submit">เพิ่มวันนัด</button>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                                     </div>
                                 </form>
@@ -153,7 +153,7 @@ $num = mysqli_num_rows($result);
                                 </div>
                                 <div class="modal-body">
                                 <form action="update_app.php" method="post">
-                                <input type="text" name="id" id="id" value=""/>
+                                <input type="hidden" name="id" id="id" value=""/>
                                     <div class="form-group">
                                         <label for="exampleInputAge">กรุณาเลือกวัน</label>
                                         <input type="date" class="form-control" name="date" id="date" value="">

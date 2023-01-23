@@ -17,9 +17,12 @@ $num_row = mysqli_num_rows($result);
         <div class="card-header">
           <h2>ข้อมูลคอร์ส</h2>
         </div>
-
+        
         <div class="card-body">
-          <a href="admin.php?Menu=2&Submenu=createcourse"><button type="button" class="btn btn-primary">เพิ่มข้อมูล </button></a>
+          <nav class="navbar navbar-light ">
+            <a href="admin.php?Menu=2&Submenu=createcourse" class="btn btn-primary">เพิ่มข้อมูล</a>
+            
+          </nav>
 
           <?php if (isset($_SESSION['error'])) { ?>
             <div class="alert alert-danger" role="alert">
