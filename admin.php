@@ -49,6 +49,9 @@ if ($Menu == "1") {
   else if ($Submenu == "indexappointment") {
     $Fileshow = "appointment/indexappointment.php";
   }
+  else if ($Submenu == "edit_appointment") {
+    $Fileshow = "appointment/edit_appointment.php";
+  }
 } else if ($Menu == "5") {
   $selected2 = "class='selected'";
   if ($Submenu == "indexreport") {
@@ -57,6 +60,9 @@ if ($Menu == "1") {
     $Fileshow = "report/indexreport1.php";
   } else if ($Submenu == "indexreport2") {
     $Fileshow = "report/indexreport2.php";
+  }
+  else if ($Submenu == "view_detail") {
+    $Fileshow = "report/view_detail.php";
   }
 } else {
   $Fileshow = "main2.php";

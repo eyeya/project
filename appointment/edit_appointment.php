@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
 }
 $sql = "SELECT * FROM appointment WHERE id  = '$id'";
 $result =  mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($result);
+$row = mysqli_fetch_array($result); //การใช้fetch_array ใช้ได้ทั้งชื่อฟิลด์และตัวเลข มันจะดึงมาทั้งหมด
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ $row = mysqli_fetch_array($result);
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>ข้อมูลการจอง</h2>
+                    <h2>ตารางนัดหมาย</h2>
                 </div>
 
                 <div class="card-body">
@@ -58,7 +58,6 @@ $row = mysqli_fetch_array($result);
                         </div>
                         <p class="w3-center">
                             <input class="btn btn-success" type="submit" name="submit" value="บันทึก" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <!-- <input type="reset"class="btn btn-danger" name="cancel" value="ยกเลิก" /> -->
                             <a href="admin.php?Menu=4&Submenu=indexappointment" class="btn btn-danger">ย้อนกลับ</a>
                         </p>
                     </form>

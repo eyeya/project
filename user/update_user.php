@@ -4,7 +4,7 @@ include_once '../config.php';
 
 if(isset($_POST['submit'])){
     $id = $_POST['id'];
-    $name = $_POST['id'];
+    $name = $_POST['name'];
     $lastname = $_POST['lastname'];
     $age = $_POST['age'];
     $telephone = $_POST['telephone'];

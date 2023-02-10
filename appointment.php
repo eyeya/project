@@ -42,6 +42,7 @@ $num = mysqli_num_rows($result);
                     
                 </div>
                 <div class="card-body">
+                    
                 <?php if($num >= 10){?>
                     <button type="button" class="btn btn-secondary" style="margin-left: 85%; margin-bottom:2%;">ลงนัดครบแล้ว</button>
                 <?php }else{?>

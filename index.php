@@ -31,8 +31,7 @@ if ($Menu == "1") {
       $Fileshow = "history.php";
    } else if ($Submenu == "details") {
       $Fileshow = "details.php";
-   }
-   else if ($Submenu == "appointment") {
+   } else if ($Submenu == "appointment") {
       $Fileshow = "appointment.php";
    }
 } else {
@@ -74,9 +73,6 @@ if ($Menu == "1") {
    .img {
       max-width: 500px;
    }
-   
-
- 
 </style>
 <!-- body -->
 
@@ -107,15 +103,16 @@ if ($Menu == "1") {
                            <li class="nav-item">
                               <a class="nav-link" onclick="location. href='index.php?Menu=1&Submenu=main';">หน้าแรก</a>
                            </li>
+                           <li class="nav-item">
+                              <a class="nav-link" onclick="location. href='index.php?Menu=4&Submenu=fullcalendar';">ตารางวันว่าง</a>
+                           </li>
                            <li class="nav-item ">
                               <a class="nav-link" onclick="location. href='index.php?Menu=2&Submenu=pricing';">คอร์ส</a>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" onclick="location. href='index.php?Menu=3&Submenu=promotion';">โปรโมชั่น</a>
                            </li>
-                           <li class="nav-item">
-                              <a class="nav-link" onclick="location. href='index.php?Menu=4&Submenu=fullcalendar';">ตารางวันว่าง</a>
-                           </li>
+
                            <?php
                            if (isset($_SESSION['user_login'])) { ?>
                               <li class="nav-item">
@@ -134,19 +131,19 @@ if ($Menu == "1") {
                </div>
                <div class="z">
                   <ul class="social_icon">
-                     
-                        
-                        <?php
-                        if (isset($_SESSION['user_login'])) { ?>
-                          <i class="fa fa-user-circle ">  </i><span class=""> ผู้ใช้งาน : <?php echo $_SESSION['username_login']; ?></span> 
-                           &nbsp;&nbsp;
-                           <a href="logout.php" class="btn btn-dark "></i> ออกจากระบบ</a>
-                     
-                  <?php } else { ?>
-                     <button type="button" class="btn btn-primary" onclick="location. href='register.php';">สมัครสมาชิก</button>
-                     <button type="button" class="btn btn-secondary" onclick="location. href='login.php';">เข้าสู่ระบบ</button>
-                  <?php }
-                  ?>
+
+
+                     <?php
+                     if (isset($_SESSION['user_login'])) { ?>
+                        <i class="fa fa-user-circle "> </i><span class=""> ผู้ใช้งาน : <?php echo $_SESSION['username_login']; ?></span>
+                        &nbsp;&nbsp;
+                        <a href="logout.php" class="btn btn-dark "></i> ออกจากระบบ</a>
+
+                     <?php } else { ?>
+                        <button type="button" class="btn btn-primary" onclick="location. href='register.php';">สมัครสมาชิก</button>
+                        <button type="button" class="btn btn-secondary" onclick="location. href='login.php';">เข้าสู่ระบบ</button>
+                     <?php }
+                     ?>
 
                   </ul>
                </div>

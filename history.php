@@ -99,12 +99,17 @@ include 'format_date.php';
               ?></td>
 
 
-              <td class="text-center"><?php 
+              <!-- <td class="text-center"><?php 
               if($row['type'] == 1){
                 echo '';
               }else{?>
                 <a href="index.php?Menu=5&Submenu=appointment&id_booking=<?php echo $id_booking?>" class="btn btn-success btn-sm">นัดหมาย</a>
               <?php } ?>
+              </td> -->
+              <td class="text-center"> 
+             
+                <a href="index.php?Menu=5&Submenu=appointment&id_booking=<?php echo $id_booking?>" class="btn btn-success btn-sm">นัดหมาย</a>
+             
               </td>
             </tr>
             <?php $i++;} } ?>

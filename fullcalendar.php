@@ -3,7 +3,7 @@
   include 'format_date.php';
 
 
-  $sql = "SELECT *,COUNT(*) OVER (PARTITION BY date)AS total FROM appointment";
+  $sql = "SELECT *,COUNT(*) OVER (PARTITION BY date)AS total FROM appointment"; //
   $result = mysqli_query($conn,$sql);
 
 ?>
@@ -54,7 +54,7 @@
                             
                         </form>
                     </div> -->
-                    
+                    <h3 align="center">หากขึ้นว่าเต็มท่านจะไม่สามารถจองได้ </h3>
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr class="text-center">
@@ -80,7 +80,7 @@
                                     <td><?= TimeThai($r['time'])?></td>
                                 
                                     <td><?php 
-                                    // echo $r['total'];
+                                    
                                     if($r['total'] >= 2){
                                         echo '<span class="badge badge-danger" style="font-size:14px;">เต็ม</span> ';
                                     }else{

@@ -3,8 +3,8 @@ session_start();
 include '../config.php';
 
 if(isset($_POST['addpro'])){
-    $id_course = $_POST['id_course'];
-    $id_user = $_POST['id_user'];
+    $id_course = $_POST['id_course']; 
+    $id_user = $_POST['id_user']; 
     $name = $_POST['name'];
     $telephone = $_POST['telephone'];
     $date = $_POST['date'];
@@ -19,12 +19,12 @@ if(isset($_POST['addpro'])){
     $sql = "INSERT INTO booking (id_course, id_user ,type, name, telephone)
                         VALUES(' $id_course','$id_user','$type','$name','$telephone')";
 	$result = mysqli_query($conn, $sql);
-    $last_id = mysqli_insert_id($conn);
-
+    $last_id = mysqli_insert_id($conn); //เพิ่มไอดีล่าสุด ลงใน appointment 
     
+    //เมื่อมีการ book มันก็จะต้องมาเพิ่มใน appointment 
     $sql2 = "INSERT INTO appointment (id_booking, id_user, date, time,status)
-                        VALUES(' $last_id','$id_user','$date','$time',1)";
-    $result = mysqli_query($conn, $sql2);
+                        VALUES(' $last_id','$id_user','$date','$time',1)"; //$last_id คือ ไอดีที่เพิ่งเพิ่มมาล่าสุด
+    $result = mysqli_query($conn, $sql2); //โดยมีการเพิ่มตารางนัดลง appointment โดย id_booking(FK ของbooking) status 1 คือยังไม่เข้าใช้บริการ
 
     
     if($result){

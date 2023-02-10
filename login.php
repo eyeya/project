@@ -154,13 +154,13 @@
                     </div>
 
 
-                    <!-- <div class="form-check">
+                    <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <small>Remember Me</small>
+                            <!-- <input type="checkbox" class="form-check-input"> -->
+                            <a href="forget_pass.php">Forget password ?</a>
                         </label>
                        
-                    </div> -->
+                    </div>
                     <?php if(isset($_SESSION['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
                         <?php 

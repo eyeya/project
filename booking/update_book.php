@@ -7,9 +7,9 @@ if(isset($_POST['submit'])){
     $id = $_POST['id'];
     $name = $_POST['name'];
     $telephone = $_POST['telephone'];
-    $status = $_POST['status'];
+    
 
-    $sql = "UPDATE booking SET name='$name',telephone='$telephone',status='$status' WHERE id = '$id' ";
+    $sql = "UPDATE booking SET name='$name',telephone='$telephone' WHERE id = '$id' ";
     $result = mysqli_query($conn,$sql);
 
     if($result){

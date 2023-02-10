@@ -49,10 +49,7 @@ $row = mysqli_fetch_array($result);
                                 <input type="text" name="" class="form-control" value="<?php echo $row['date'].' '.$row['time']?>" onchange="selectday()"readonly>
                             </div>
 
-                            <div class="form-group col-md-4">
-                                <label>ครั้งที่</label>
-                                <input type="text" class="form-control" name="status" value="<?php echo $row['status']?>" placeholder="">
-                            </div>
+                           
                         </div>
                         <p class="w3-center">
                        <input class="btn btn-success" type="submit" name="submit" value="บันทึก" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

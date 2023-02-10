@@ -7,8 +7,11 @@ if(isset($_GET['id'])){
 
         $sql = "DELETE FROM booking WHERE id='$id'";
         $result = mysqli_query($conn,$sql);
+        
+        $sql1 = "DELETE FROM appointment WHERE id_booking='$id'";
+        $result1 = mysqli_query($conn,$sql1);
     
-    if($result){
+    if($result&&$result1){
         $_SESSION['success'] = "ลบข้อมูลสำเร็จ";
         header( "location: ../admin.php?Menu=4&Submenu=indexbook" );
     }else{

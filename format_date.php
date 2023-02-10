@@ -29,6 +29,13 @@ function DBThaiDate($d){
     $d1=explode("-",$d);
     return $d1[2] . "/" . $d1[1] . "/" . (intval($d1[0]));
 }
+function DBThaiDate1($d){
+    if (!$d) return "";
+    if ($d == "0000-00-00") return "";
+
+    $d1=explode("-",$d);
+    return  $d1[1] . "/" . (intval($d1[0]));
+}
 
 function DBThaiLongDate($d){
     global $month_name;
@@ -37,6 +44,15 @@ function DBThaiLongDate($d){
 
     $d1=explode("-",$d);
     return intval($d1[2]) . " " . $month_name[intval($d1[1])] . " " . (intval($d1[0]) + 543);
+}
+
+function DBThaiLongDate1($d){
+    global $month_name;
+    if (!$d) return "";
+    if ($d == "0000-00-00") return "";
+
+    $d1=explode("-",$d);
+    return  $month_name[intval($d1[1])] . " " . (intval($d1[0]) + 543);
 }
 
 function DBThaiLongDateFull($d){
