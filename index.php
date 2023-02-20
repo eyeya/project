@@ -22,8 +22,8 @@ if ($Menu == "1") {
    }
 } else if ($Menu == "4") {
    $selected2 = "class='selected'";
-   if ($Submenu == "fullcalendar") {
-      $Fileshow = "fullcalendar.php";
+   if ($Submenu == "fullcalendartest") {
+      $Fileshow = "fullcalendartest.php";
    }
 } else if ($Menu == "5") {
    $selected2 = "class='selected'";
@@ -104,7 +104,7 @@ if ($Menu == "1") {
                               <a class="nav-link" onclick="location. href='index.php?Menu=1&Submenu=main';">หน้าแรก</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" onclick="location. href='index.php?Menu=4&Submenu=fullcalendar';">ตารางวันว่าง</a>
+                              <a class="nav-link" onclick="location. href='index.php?Menu=4&Submenu=fullcalendartest';">ตารางวันว่าง</a>
                            </li>
                            <li class="nav-item ">
                               <a class="nav-link" onclick="location. href='index.php?Menu=2&Submenu=pricing';">คอร์ส</a>

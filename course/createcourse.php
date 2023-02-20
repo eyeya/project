@@ -26,8 +26,9 @@
                                 <label for="inputPrice">ราคา</label>
                                 <input type="text" class="form-control" name="price" >
                             </div>
+                            <!-- เก็บประเภทไปลงใน type เอา value ไปเก็บ ก็คือ 1 2  -->
                             <div class="form-group col-md-6">
-                                <label for="inputPrice">ประเภท</label>
+                                <label for="inputPrice">ประเภท</label> 
                                 <select class="form-control" name="type">
                                     <option value="1">คอร์ส</option>
                                     <option value="2">โปรโมชั่น</option>

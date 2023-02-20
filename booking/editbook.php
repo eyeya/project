@@ -44,10 +44,7 @@ $row = mysqli_fetch_array($result);
                                 <label>เบอร์โทร</label>
                                 <input type="text" name="telephone" class="form-control" value="<?php echo $row['telephone']?>" >
                             </div>
-                            <div class="form-group col-md-4">
-                                <label>วันที่จอง</label>
-                                <input type="text" name="" class="form-control" value="<?php echo $row['date'].' '.$row['time']?>" onchange="selectday()"readonly>
-                            </div>
+                          
 
                            
                         </div>

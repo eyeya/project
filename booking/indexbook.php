@@ -1,8 +1,5 @@
 <?php
 include 'format_date.php';
-// $sql = "SELECT booking.id,booking.telephone,booking.date AS booking_date,booking.time AS booking_time,user.name,user.lastname,course.name AS name_course,promotion.name AS name_promotion FROM booking LEFT JOIN course ON booking.id_course = course.id LEFT JOIN promotion ON booking.id_promotion = promotion.id LEFT JOIN user ON booking.id_user = user.id;";
-// $result =  mysqli_query($conn, $sql);
-// $num_row = mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,13 +49,13 @@ include 'format_date.php';
             </thead>
             <?php
             include 'config.php';
-            $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time,booking.name,booking.telephone FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id GROUP BY appointment.id_booking ORDER BY booking.id DESC;";
+            $sql = "SELECT booking.id,course.name AS name_course,course.type,appointment.date,appointment.time,booking.name,booking.telephone FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id GROUP BY appointment.id_booking ORDER BY booking.id DESC;";
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             $i = 1;
             if ($num_row > 0) {
               while ($row = mysqli_fetch_array($result)) {
-                $id_course = $row['id_course']; 
+                $id_course = $row['id_course'];
                 $id_booking = $row['id']; //ไอดีการจองนัดๆ 
             ?>
                 <tbody>
@@ -76,7 +73,7 @@ include 'format_date.php';
 
                     <td><?php echo DBThaiDate($row['date']) . ' <br> ' . TimeThai($row['time']); ?></td>
                     <td><?php
-                        $sql2 = "SELECT COUNT(appointment.id) AS total_app FROM appointment LEFT JOIN booking on appointment.id_booking = booking.id WHERE appointment.id_booking = $id_booking AND appointment.status = 2";
+                        $sql2 = "SELECT COUNT(appointment.id) AS total_app FROM appointment INNER JOIN booking on appointment.id_booking = booking.id WHERE appointment.id_booking = $id_booking AND appointment.status = 2";
                         $result2 = mysqli_query($conn, $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
                         $total_app = $row2['total_app']; //รวมแถวมาคำนวณ count appointment.id

@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $sql = "SELECT id_booking FROM appointment WHERE id = $id";
     $result = mysqli_query($conn,$sql);
     $r = mysqli_fetch_assoc($result);
-    $id_booking = $r['id_booking'];
+    $id_booking = $r['id_booking'];//id booking จาก booking
     
     $sql1 = "UPDATE appointment SET date = '$date', time = '$time' WHERE id = $id";
     $result1 = mysqli_query($conn,$sql1);

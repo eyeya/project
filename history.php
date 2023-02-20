@@ -49,17 +49,17 @@ include 'format_date.php';
           </thead>
             <?php
             $user = $_SESSION['user_login'];
-            // $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time,appointment.status FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id WHERE booking.id_user = $user ORDER BY booking.id DESC;";
-            $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time FROM booking LEFT JOIN appointment on booking.id = appointment.id_booking LEFT JOIN course on booking.id_course = course.id WHERE booking.id_user = '$user' GROUP BY appointment.id_booking ORDER BY booking.id DESC;";
-            // $sql = "SELECT * FROM booking WHERE id_user = $user;";
+          
+            $sql = "SELECT booking.id,course.name AS name_course,course.price,course.type,appointment.date,appointment.time FROM booking INNER JOIN appointment on booking.id = appointment.id_booking INNER JOIN course on booking.id_course = course.id WHERE booking.id_user = '$user' GROUP BY appointment.id_booking ORDER BY booking.id DESC;";
+            
             $result =  mysqli_query($conn, $sql);
             $num_row = mysqli_num_rows($result);
             $i = 1;
             if ($num_row > 0) {
               while ($row = mysqli_fetch_array($result)) {
-                $id_course = $row['id_course'];
-                $id_booking = $row['id'];
-                
+                $id_course = $row['id_course']; // มาจาก id ของ course
+                $id_booking = $row['id']; //มาจากid ของ booking 
+                $type = $row['type'];
             ?>
           <tbody>
             <tr>
@@ -76,10 +76,7 @@ include 'format_date.php';
               <td>
                 <?php 
                 
-                // $sql3 = "SELECT MAX(id),date FROM appointment WHERE id_booking = $id_booking ";
-                // $result3 =  mysqli_query($conn, $sql3);
-                // $row3 = mysqli_fetch_assoc($result3);
-                // echo DBThaiDate($row3['date']);
+              
 
                 echo DBThaiDate($row['date']).'  '.TimeThai($row['time']);
                 ?>
@@ -94,21 +91,13 @@ include 'format_date.php';
               if($row['type'] == 2){
                   echo $total_app.' / 10 ครั้ง';
               }else{
-                echo $total_app.' ครั้ง';
+                echo $total_app.' / 1 ครั้ง';
               }
               ?></td>
 
-
-              <!-- <td class="text-center"><?php 
-              if($row['type'] == 1){
-                echo '';
-              }else{?>
-                <a href="index.php?Menu=5&Submenu=appointment&id_booking=<?php echo $id_booking?>" class="btn btn-success btn-sm">นัดหมาย</a>
-              <?php } ?>
-              </td> -->
               <td class="text-center"> 
              
-                <a href="index.php?Menu=5&Submenu=appointment&id_booking=<?php echo $id_booking?>" class="btn btn-success btn-sm">นัดหมาย</a>
+                <a href="index.php?Menu=5&Submenu=appointment&id_booking=<?php echo $id_booking?>&type=<?php echo $type?>" class="btn btn-success btn-sm">นัดหมาย</a>
              
               </td>
             </tr>

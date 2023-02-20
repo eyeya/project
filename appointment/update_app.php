@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
         header( "location: ../admin.php?Menu=4&Submenu=indexappointment" );
     }
 }
-
+//รับค่ามาจาก ตรงname = approve จากหน้า edit เพื่อ update ว่าเข้าใช้บริการแล้ว
 if(isset($_POST['approve'])){
     $approve = $_POST['approve'];
     $id = $_POST['id'];

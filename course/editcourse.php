@@ -44,18 +44,20 @@ $type = $row['type'];
                                 <input type="text" class="form-control"  name="price" value="<?php echo $row['price']?>" >
                             </div>
                             <div class="form-group col-md-4">
-                                <label>ราคาโปรโมชั่น</label>
+                                <label>ประเภท</label>
                                 <select class="form-control" name="type" >
                                     
                                     <?php
                                         $sql1 = "SELECT * FROM type ";
-                                        $sql1 = $conn->query($sql1);
-                                        while($r1 = $sql1->fetch_assoc()){
+                                        //ตอนที่เลือกมาเอามาจากตาราง type โดยมียจะดึงไอดีที่เก็บ มาโชว์ คอร์สกับโปรโมชั่น 
+                                        // $sql1 = $conn->query($sql1); 
+                                        $re = mysqli_query($conn,$sql1); 
+                                        while($r1 = mysqli_fetch_assoc($re)){
                                             echo "<option value='".$r1['id']."'";
                                             if($r1['id'] == $type){
                                                 echo "selected";
                                             }
-                                            echo ">".$r1['name']."</option>'";
+                                            echo ">".$r1['name']."</option>'"; //name จาก type
                                         }
                                         ?>
                                 </select>

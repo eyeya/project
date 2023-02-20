@@ -7,6 +7,8 @@ if(isset($_GET['id'])){
 
     $sql = "DELETE FROM user WHERE id='$id'";
     $result = mysqli_query($conn,$sql);
+    
+  
 
     if($result){
         $_SESSION['success'] = "ลบข้อมูลสำเร็จ";

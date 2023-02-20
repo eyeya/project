@@ -13,11 +13,12 @@ if(isset($_POST['submit'])){
     $u_role = $_POST['u_role'];
 
 
-    $new_password = md5($password);
+    $new_password = md5($password); //เข้ารหัสแบบmd5
 
     $sql = "UPDATE user SET name='$name',lastname='$lastname',age=' $age',telephone='$telephone',username='$username',password='$new_password',u_role='$u_role' WHERE id='$id'";
     $result = mysqli_query($conn,$sql);
 
+   
     if($result){
         $_SESSION['success'] = "แก้ไขข้อมูลสำเร็จ";
         header( "location: ../admin.php?Menu=1&Submenu=indexuser" );

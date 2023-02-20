@@ -4,7 +4,7 @@ include 'config.php';
 
 if(isset($_POST['submit'])){
     $id_user = $_POST['id_user'];
-    $id_book = $_POST['id_book'];
+    $id_book = $_POST['id_book']; //
     $date = $_POST['date'];
     $time = $_POST['time'];
 

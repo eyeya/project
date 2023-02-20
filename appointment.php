@@ -1,26 +1,26 @@
 <?php
 session_start();
 include '../config.php';
-$id_user = $_SESSION['user_login'];
-if(isset($_GET['id_booking'])){
+$id_user = $_SESSION['user_login']; //seccionตรวจสอบการlogin
+if (isset($_GET['id_booking'])) { //รับค่า ไอดี booking มา 
     $id_book = $_GET['id_booking'];
-// echo $id_book;
+    $type = $_GET['type'];
+    // echo $id_book;
 }
-// $sqlbook = "SELECT id FROM booking WHERE id_user = $id_user";
-// $re = mysqli_query($conn,$sqlbook);
-// $r = mysqli_fetch_assoc($re);
-// $id_book = $r['id'];
+
+//เลือกจากตารางหลังบ้านมาโชว์
 
 $sql = "SELECT appointment.id,appointment.id_user,appointment.id_booking,appointment.date,appointment.time,appointment.status FROM appointment LEFT JOIN booking on appointment.id_booking = booking.id WHERE appointment.id_user = $id_user AND appointment.id_booking = $id_book ";
-$result = mysqli_query($conn,$sql);
+$result = mysqli_query($conn, $sql);
 $num = mysqli_num_rows($result);
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <header>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- style css -->
     <link rel="stylesheet" href="css/style.css">
 </header>
 <style>
@@ -39,33 +39,40 @@ $num = mysqli_num_rows($result);
             <div class="card">
                 <div class="card-header">
                     <h2 align="center">การนัดหมาย</h2>
-                    
+
                 </div>
                 <div class="card-body">
-                    
-                <?php if($num >= 10){?>
+                     
+                    <?php  
+                    if($type == 1){
+                       echo ''; 
+                    }else{
+                        if ($num >= 10) { ?>
                     <button type="button" class="btn btn-secondary" style="margin-left: 85%; margin-bottom:2%;">ลงนัดครบแล้ว</button>
-                <?php }else{?>
-                    <button type="button" class="btn btn-primary" style="margin-left: 85%; margin-bottom:2%;" data-toggle="modal" data-target="#addday" data-id_user="<?= $id_user ?>" data-id_book="<?= $id_book ?>" onclick="$('#id_user').val($(this).data('id_user')); $('#id_book').val($(this).data('id_book')); $('#addday').modal('show');">เพิ่มวันนัดครั้งถัดไป</button>
-                <?php }?>
+                    <?php } else { ?>
+                        <button type="button" class="btn btn-primary" style="margin-left: 85%; margin-bottom:2%;" data-toggle="modal" data-target="#addday" data-id_user="<?= $id_user ?>" data-id_book="<?= $id_book ?>" onclick="$('#id_user').val($(this).data('id_user')); $('#id_book').val($(this).data('id_book')); $('#addday').modal('show');">เพิ่มวันนัดครั้งถัดไป</button>
+                    <?php } }?>
+
+                    
+                    
 
 
-                <?php if (isset($_SESSION['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                    <?php
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                    ?>
-                    </div>
-                <?php } ?>
-                <?php if (isset($_SESSION['success'])) { ?>
-                    <div class="alert alert-success" role="alert">
-                    <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                    ?>
-                    </div>
-                <?php } ?>
+                    <?php if (isset($_SESSION['error'])) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            ?>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['success'])) { ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php
+                            echo $_SESSION['success'];
+                            unset($_SESSION['success']);
+                            ?>
+                        </div>
+                    <?php } ?>
                     <table class="table table-bordered table-hover ">
                         <thead class="table-active">
                             <tr>
@@ -77,39 +84,35 @@ $num = mysqli_num_rows($result);
                             </tr>
                         </thead>
                         <tbody>
-                        <?php 
-                        $i=1;
-                        while($row = mysqli_fetch_assoc($result)){
-                            $bookid = $row['id'];
-                        ?>
-                            <tr>   
-                            <th scope="row" class="text-center"><?= $i ?></th>
-                                <td class="text-center"><?= $row['date'] ?></td>
-                                <td class="text-center"><?= $row['time'] ?></td>
-                                <td class="text-center ">
-                                    <?php  if($row['status'] == 1){
-                                        echo '<span class="text-warning font-weight-bold">ยังไม่เข้าใช้บริการ</span>';
-                                    }else{
-                                        echo '<span class="text-success font-weight-bold">เข้าใช้บริการแล้ว</span>';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="text-center"> 
-                                
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#edit" 
-                                data-id="<?= $row['id'] ?>" 
-                                data-date="<?= $row['date'] ?>"
-                                data-time="<?= $row['time'] ?>"
-                                data-id_book="<?php echo $id_book ?>"
-                                onclick="$('#id').val($(this).data('id')); 
+                            <?php
+                            $i = 1;
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $bookid = $row['id'];
+                            ?>
+                                <tr>
+                                    <th scope="row" class="text-center"><?= $i ?></th>
+                                    <td class="text-center"><?= $row['date'] ?></td>
+                                    <td class="text-center"><?= $row['time'] ?></td>
+                                    <td class="text-center ">
+                                        <?php if ($row['status'] == 1) {
+                                            echo '<span class="text-warning font-weight-bold">ยังไม่เข้าใช้บริการ</span>';
+                                        } else {
+                                            echo '<span class="text-success font-weight-bold">เข้าใช้บริการแล้ว</span>';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td class="text-center">
+
+                                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#edit" data-id="<?= $row['id'] ?>" data-date="<?= $row['date'] ?>" data-time="<?= $row['time'] ?>" data-id_book="<?php echo $id_book ?>" onclick="$('#id').val($(this).data('id')); 
                                 $('#date').val($(this).data('date'));
                                 $('#time').val($(this).data('time'));
                                 $('#id_book').val($(this).data('id_book'));
                                 $('#edit').modal('show');">แก้ไขวัน/เวลา</button>
-                                </td>
+                                    </td>
 
-                            </tr>
-                            <?php $i++;} ?>
+                                </tr>
+                            <?php $i++;
+                            } ?>
                         </tbody>
                     </table>
                     <div class="modal fade" id="addday" tabindex="-1" role="dialog" aria-labelledby="addday" aria-hidden="true">
@@ -122,9 +125,9 @@ $num = mysqli_num_rows($result);
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="insert_app.php" method="post">
-                                    <input type="hidden" name="id_user" id="id_user" value=""/>
-                                    <input type="hidden" name="id_book" id="id_book" value=""/>
+                                    <form action="insert_app.php" method="post">
+                                        <input type="hidden" name="id_user" id="id_user" value="" />
+                                        <input type="hidden" name="id_book" id="id_book" value="" />
                                         <div class="form-group">
                                             <label for="exampleInputAge">กรุณาเลือกวัน</label>
                                             <input type="date" class="form-control" name="date">
@@ -133,11 +136,11 @@ $num = mysqli_num_rows($result);
                                             <label for="exampleInputAge">กรุณาเลือกเวลา</label>
                                             <input type="time" class="form-control" name="time">
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" name="submit">เพิ่มวันนัด</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" name="submit">เพิ่มวันนัด</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                </div>
                                 </form>
                             </div>
                         </div>
@@ -153,16 +156,16 @@ $num = mysqli_num_rows($result);
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                <form action="update_app.php" method="post">
-                                <input type="hidden" name="id" id="id" value=""/>
-                                    <div class="form-group">
-                                        <label for="exampleInputAge">กรุณาเลือกวัน</label>
-                                        <input type="date" class="form-control" name="date" id="date" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputAge">กรุณาเลือกเวลา</label>
-                                        <input type="time" class="form-control" name="time" id="time" value="">
-                                    </div>
+                                    <form action="update_app.php" method="post">
+                                        <input type="hidden" name="id" id="id" value="" />
+                                        <div class="form-group">
+                                            <label for="exampleInputAge">กรุณาเลือกวัน</label>
+                                            <input type="date" class="form-control" name="date" id="date" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputAge">กรุณาเลือกเวลา</label>
+                                            <input type="time" class="form-control" name="time" id="time" value="">
+                                        </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary" name="submit">บันทึกการแก้ไข</button>

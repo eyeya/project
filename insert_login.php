@@ -10,6 +10,7 @@ if(isset($_POST['btnLogin'])){
 
     $password_c = md5($password);
 //มีการเลือก selete username password จาก DB มา
+
   	$sql = "SELECT * FROM user WHERE username ='$username' AND password='$password_c'";
   	$result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
@@ -19,6 +20,7 @@ if(isset($_POST['btnLogin'])){
 
   	if($result->num_rows > 0) {
   	    $_SESSION['username_login'] = $row['name'].' '.$row['lastname'];
+
         if($row['u_role'] == 'admin'){
         $_SESSION['admin_login'] = $row['id'];
         header("location: admin.php");
